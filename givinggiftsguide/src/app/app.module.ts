@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { GiftComponent } from './gift/gift.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { VoegGiftToeComponent } from './voeg-gift-toe/voeg-gift-toe.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GiftComponent,
+    CategorieComponent,
+    VoegGiftToeComponent
   ],
   imports: [
     BrowserModule

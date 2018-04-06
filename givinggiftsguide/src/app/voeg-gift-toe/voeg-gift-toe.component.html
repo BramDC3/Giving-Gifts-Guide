@@ -1,0 +1,19 @@
+<div class="ui large form segment"> 
+  <h3 class="ui header">Voeg jouw geschenk idee toe:</h3>
+  <div class="field">
+	<label for="naam">Naam:</label> 
+	<input id="naam" name="naam" #naamnieuwegift>
+  </div>
+  <div class="field">
+    <label for="beschrijving">Beschrijving:</label> 
+    <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift>
+    </div>
+    <div class="field">
+      <label for="prijs">Prijs:</label> 
+      <input id="prijs" name="prijs" #prijsnieuwegift>
+      </div>
+<button (click)="voegGiftToe(naamnieuwegift, beschrijvingnieuwegift, prijsnieuwegift)"
+      class="ui positive right floated button">
+  Voeg geschenk idee toe
+</button>
+</div>	
