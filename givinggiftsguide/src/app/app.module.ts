@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GiftComponent } from './gift/gift.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { VoegGiftToeComponent } from './voeg-gift-toe/voeg-gift-toe.component';
+import { GiftFilterPipe } from './gift-filter.pipe';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { VoegGiftToeComponent } from './voeg-gift-toe/voeg-gift-toe.component';
     AppComponent,
     GiftComponent,
     CategorieComponent,
-    VoegGiftToeComponent
+    VoegGiftToeComponent,
+    GiftFilterPipe
   ],
   imports: [
     BrowserModule

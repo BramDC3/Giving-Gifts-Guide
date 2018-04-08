@@ -1,13 +1,22 @@
-<!--<p>Naam: {{_naam}}</p>
-<p>Beschrijving: {{_beschrijving}}</p>
-<p>Prijs: &euro; {{_prijs}}</p>
-<p>Categorieen:</p>
-<ul>
-  <li *ngFor="let categorie of _categorieen">
-    <app-categorie [naam]="categorie"></app-categorie>
-  </li>
-</ul>
-<p>Aanmaakdatum: {{_aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
-<p>Aantal likes: {{_likes}}</p> -->
-
-<p>Geschenk met naam {{gift._naam}}</p>
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <p>Geschenk met naam {{gift._naam}}</p>
+    </div>
+    <div class="meta">
+      <p>Beschrijving: {{gift._beschrijving}}</p>
+      <p>Prijs: &euro; {{gift._prijs}}</p>
+    </div>
+    <div class="description">
+      <ul>
+        <li *ngFor="let categorie of _categorieen">
+          <app-categorie [naam]="categorie"></app-categorie>
+        </li>
+      </ul>
+    </div>
+    <div class="meta">
+      <p>Aanmaakdatum: {{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
+      <p>Aantal likes: {{gift._likes}}</p>
+    </div>
+  </div>
+</div>

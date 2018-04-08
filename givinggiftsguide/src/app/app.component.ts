@@ -1,24 +1,30 @@
 import { Component } from '@angular/core';
 import { Gift } from './gift/gift.model';
+import { GiftDataService } from './gift-data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [GiftDataService]
 })
 
 export class AppComponent {
-  private _gifts = new Array<Gift>();
+  public filterGiftName: string;
+  
+  constructor(private _giftDataService : GiftDataService)
+  {
+  }
 
-  constructor() {
-    const gift1 = new Gift("VR-bril", "Virtual Reality", 12.34)
-    const gift2 = new Gift("AR-bril", "Augmented Reality", 43.21)
-
-    this._gifts.push(gift1);
-    this._gifts.push(gift2);
+  get gifts(): Gift[] {
+    return this._giftDataService.gifts;
   }
 
   nieuweGiftToegevoegd(gift) {
-    this._gifts.push(gift);
+    this._giftDataService.voegNieuweGiftToe(gift);
+  }
+
+  applyFilter(filter: string) {
+    this.filterGiftName = filter;
   }
 }
