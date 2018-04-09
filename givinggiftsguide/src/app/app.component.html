@@ -1,11 +1,8 @@
 <div class="ui container">
-  <div class="ui basic segment">
-    <app-voeg-gift-toe (nieuweGift)="nieuweGiftToegevoegd($event)"></app-voeg-gift-toe>
-  </div>
   <div class="ui segment">
       <div>
-        <input type='text' placeholder='Zoek op naam...' #filter>
-        <button (click)="applyFilter(filter.value)">filter</button>
+        <input type='text' placeholder='Zoek op naam...' #filter
+        (keyup)='filterGift$.next($event.target.value)'>
       </div>
       <div class="ui basic segment">
         <div class="ui cards">
@@ -13,5 +10,8 @@
             [gift]='lokaleGift'></app-gift>
         </div>
       </div>
+  </div>
+  <div class="ui basic segment">
+    <app-voeg-gift-toe (nieuweGift)="nieuweGiftToegevoegd($event)"></app-voeg-gift-toe>
   </div>
 </div>

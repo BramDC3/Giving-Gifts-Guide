@@ -11,7 +11,7 @@ export class GiftFilterPipe implements PipeTransform {
       return gifts;
     }
     return gifts.filter(gift =>
-      gift.naam.toLowerCase().startsWith(naam.toLowerCase())
+      gift.naam.toLowerCase().includes(naam.toLowerCase())
     );
   }
 
