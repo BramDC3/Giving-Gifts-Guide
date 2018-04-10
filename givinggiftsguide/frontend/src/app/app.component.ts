@@ -14,6 +14,7 @@ import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 export class AppComponent {
   public filterGiftName: string;
   public filterGift$ = new Subject<string>();
+  private _gifts: Gift[];
   
   constructor(private _giftDataService : GiftDataService) {
     this.filterGift$
@@ -25,12 +26,18 @@ export class AppComponent {
     .subscribe(val => this.filterGiftName = val);
   }
 
-  get gifts(): Gift[] {
-    return this._giftDataService.gifts;
+  ngOnInit() {
+    this._giftDataService.gifts.subscribe(
+    items => this._gifts = items);
+  }
+
+  get gifts() {
+    return this._gifts;
   }
 
   nieuweGiftToegevoegd(gift) {
-    this._giftDataService.voegNieuweGiftToe(gift);
+    this._giftDataService.voegNieuweGiftToe(gift)
+      .subscribe(item => this._gifts.push(item));
   }
 
   applyFilter(filter: string) {

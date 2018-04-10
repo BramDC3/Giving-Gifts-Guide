@@ -22,6 +22,14 @@ export class Gift {
   ngOnInit() {
   }
 
+  toJSON() {
+    return {
+      naam: this._naam,
+      beschrijving: this._beschrijving,
+      prijs: this._prijs
+    };
+  }
+
   get naam(): string {
     return this._naam;
   }

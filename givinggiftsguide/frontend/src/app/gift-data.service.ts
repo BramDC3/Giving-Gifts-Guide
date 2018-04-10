@@ -1,23 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Gift } from './gift/gift.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class GiftDataService {
-  private _gifts = new Array<Gift>();
+  //private _gifts = new Array<Gift>();
+  private readonly _appUrl = '/API/gifts';
 
-  constructor() {
-    let gift1 = new Gift("VR-bril", "Virtual Reality", 12.34)
-    let gift2 = new Gift("AR-bril", "Augmented Reality", 43.21)
+  constructor(private http: HttpClient) {
 
-    this._gifts.push(gift1);
-    this._gifts.push(gift2);
   }
 
-  get gifts(): Gift[] {
-    return this._gifts;
+  get gifts(): Observable<Gift[]> {
+    return this.http
+      .get(this._appUrl)
+      .pipe(
+        map((list: any[]): Gift[] =>
+          list.map(item =>
+            new Gift(item.naam, item.beschrijving, item.prijs)
+          )
+        )
+      );
   }
 
-  voegNieuweGiftToe(gift: Gift) {
-    this._gifts = [...this._gifts, gift];
+  voegNieuweGiftToe(gift): Observable<Gift> {
+    return this.http
+    .post(this._appUrl, gift)
+    .pipe(
+      map(
+        (item: any): Gift =>
+          new Gift(item.naam, item.beschrijving, item.prijs)
+      )
+    );
   }
+
 }
