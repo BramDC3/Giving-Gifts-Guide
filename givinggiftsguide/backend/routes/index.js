@@ -10,10 +10,19 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET all gifts */
-router.get('API/gifts', function(req, res, next) {
+router.get('/API/gifts/', function(req, res, next) {
   Gift.find(function(err, gifts) {
     if (err) { return next(err); }
     res.json(gifts);
+  });
+});
+
+/* POST new gift */
+router.post('/API/gifts/', function(req, res, next) {
+  let gift = new Gift(req.body);
+  gift.save(function(err, rec) {
+    if (err){ return next(err); }
+    res.json(rec);
   });
 });
 
