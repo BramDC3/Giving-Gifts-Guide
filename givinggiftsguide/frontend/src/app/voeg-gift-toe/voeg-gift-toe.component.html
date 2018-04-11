@@ -1,19 +1,22 @@
-<div class="ui large form segment"> 
-  <h3 class="ui header">Voeg jouw geschenk idee toe:</h3>
-  <div class="field">
-	<label for="naam">Naam:</label> 
-	<input id="naam" name="naam" #naamnieuwegift>
-  </div>
-  <div class="field">
-    <label for="beschrijving">Beschrijving:</label> 
-    <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift>
+<form [formGroup]='gift' (ngSubmit)='onSubmit()'>
+  <div class="ui large form segment">
+    <h3 class="ui header">Voeg jouw geschenk idee toe:</h3>
+    <div class="field">
+      <label for="naam">Naam:</label>
+      <input id="naam" name="naam" #naamnieuwegift formControlName='naam' #spy>
     </div>
     <div class="field">
-      <label for="prijs">Prijs:</label> 
-      <input id="prijs" name="prijs" #prijsnieuwegift>
-      </div>
-<button (click)="voegGiftToe(naamnieuwegift, beschrijvingnieuwegift, prijsnieuwegift)"
-      class="ui positive right floated button">
-  Voeg geschenk idee toe
-</button>
-</div>	
+      <label for="beschrijving">Beschrijving:</label>
+      <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift formControlName='beschrijving'>
+    </div>
+    <div class="field">
+      <label for="prijs">Prijs:</label>
+      <input id="prijs" name="prijs" #prijsnieuwegift formControlName='prijs'>
+    </div>
+    <button (click)="voegGiftToe(naamnieuwegift, beschrijvingnieuwegift, prijsnieuwegift)" class="ui positive right floated button"
+      type="submit">
+      Voeg geschenk idee toe
+    </button>
+  </div>
+</form>
+REMOVE {{ gift.value | json }} {{ gift.valid }} {{ spy.className }}
