@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/giftdb')
+mongoose.connect('mongodb://localhost/giftdb');
+require('./models/Categorie')
 require('./models/Gift');
 
 var index = require('./routes/index');

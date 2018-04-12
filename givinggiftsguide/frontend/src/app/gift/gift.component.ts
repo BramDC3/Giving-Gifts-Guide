@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Gift } from './gift.model'
 
 @Component({
@@ -8,11 +8,13 @@ import { Gift } from './gift.model'
 })
 export class GiftComponent implements OnInit {
   @Input() public gift: Gift;
+  @Output() public verwijderGift = new EventEmitter<Gift>();
 
-  constructor() {
+  constructor() { }
+
+  ngOnInit() { }
+
+  giftVerwijderen() {
+    this.verwijderGift.emit(this.gift);
   }
-
-  ngOnInit() {
-  }
-
 }

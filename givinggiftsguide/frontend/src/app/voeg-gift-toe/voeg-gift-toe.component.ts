@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Gift } from '../gift/gift.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Categorie } from '../categorie/categorie.model';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-voeg-gift-toe',
@@ -8,27 +10,48 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./voeg-gift-toe.component.css']
 })
 export class VoegGiftToeComponent implements OnInit {
+  public readonly soortTypes = ['Normaal', 'Speciaal', 'Feestdag'];
   @Output() public nieuweGift = new EventEmitter<Gift>();
   private gift: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
+
+  get categorieen(): FormArray {
+    return <FormArray>this.gift.get('categorieen');
+  }
 
   ngOnInit() {
-    this.gift = new FormGroup({
-      naam: new FormControl('Naam van de gift', [Validators.required, Validators.minLength(3)]),
-      beschrijving: new FormControl('Beschrijving van de gift', [Validators.required, Validators.minLength(10)]),
-      prijs: new FormControl(123, Validators.required)
+    this.gift = this.fb.group({
+      naam: ['Naam van de gift', [Validators.required, Validators.minLength(3)]],
+      beschrijving: ['Beschrijving van de gift', [Validators.required, Validators.minLength(10)]],
+      prijs: [123, [Validators.required, Validators.min(1), Validators.max(5000)]],
+      categorieen: this.fb.array([ this.maakCategorieen() ])
+    });
+
+    this.categorieen.valueChanges
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe(catList => {
+        const lastElement = catList[catList.length - 1];
+        if ( lastElement.categorienaam &&
+          lastElement.categorienaam.length > 2 ) 
+          { this.categorieen.push(this.maakCategorieen()); }
+      });
+  }
+
+  maakCategorieen(): FormGroup {
+    return this.fb.group({
+      categorienaam: ['', [Validators.required, Validators.minLength(3)]],
+      soort: ['']
     })
   }
 
   onSubmit() {
-    this.nieuweGift.emit(new Gift(this.gift.value.naam, this.gift.value.beschrijving, this.gift.value.prijs));
-  }
-
-  voegGiftToe(naamNieuweGift: HTMLInputElement, beschrijvingNieuweGift: HTMLInputElement, prijsNieuweGift: HTMLInputElement) : boolean {
-    const gift = new Gift(naamNieuweGift.value, beschrijvingNieuweGift.value, Number(prijsNieuweGift.value));
+    const gift = new Gift(this.gift.value.naam, this.gift.value.beschrijving, this.gift.value.prijs);
+    for (const cat of this.gift.value.categorieen) {
+      if (cat.categorienaam.length > 2) {
+        gift.voegCategorieToe(new Categorie(cat.categorienaam, cat.soort));
+      }
+    }
     this.nieuweGift.emit(gift);
-    return false;
   }
-
 }

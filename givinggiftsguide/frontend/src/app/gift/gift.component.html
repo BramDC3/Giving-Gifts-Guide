@@ -9,8 +9,8 @@
     </div>
     <div class="description">
       <ul>
-        <li *ngFor="let categorie of _categorieen">
-          <app-categorie [naam]="categorie"></app-categorie>
+        <li *ngFor="let cat of gift._categorieen">
+          <app-categorie [categorie]='cat'></app-categorie>
         </li>
       </ul>
     </div>
@@ -18,5 +18,8 @@
       <p>Aanmaakdatum: {{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
       <p>Aantal likes: {{gift._likes}}</p>
     </div>
+    <button class="ui icon button" (click)="giftVerwijderen()">
+      <i class="trash outline icon"></i>
+    </button>
   </div>
 </div>

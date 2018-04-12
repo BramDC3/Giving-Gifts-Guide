@@ -5,16 +5,41 @@
       <label for="naam">Naam:</label>
       <input id="naam" name="naam" #naamnieuwegift formControlName='naam' #spy>
     </div>
+    <div *ngIf='gift.get("naam").errors?.required && gift.get("naam").touched' class='ui pointing red basic label'>
+      Naam is een verplicht veld
+    </div>
     <div class="field">
       <label for="beschrijving">Beschrijving:</label>
       <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift formControlName='beschrijving'>
+    </div>
+    <div *ngIf='gift.get("beschrijving").errors?.required && gift.get("beschrijving").touched' class='ui pointing red basic label'>
+      Beschrijving is een verplicht veld
     </div>
     <div class="field">
       <label for="prijs">Prijs:</label>
       <input id="prijs" name="prijs" #prijsnieuwegift formControlName='prijs'>
     </div>
-    <button (click)="voegGiftToe(naamnieuwegift, beschrijvingnieuwegift, prijsnieuwegift)" class="ui positive right floated button"
-      type="submit">
+    <div *ngIf='gift.get("prijs").errors?.required && gift.get("prijs").touched' class='ui pointing red basic label'>
+      Prijs is een verplicht veld
+    </div>
+
+    <div formArrayName='categorieen'
+      *ngFor='let item of gift.get("categorieen").controls;
+              let i = index'>
+      <div [formGroupName] = 'i'>
+        <label for="categorie_naam">Categorie:</label>
+        <div>
+            <input type="text" id="categorie_naam" formControlName='categorienaam'>
+            <select id="categorie_soort" formControlName='soort'>
+              <option *ngFor='let type of soortTypes' [value]='type'>
+                {{type}}
+              </option>
+            </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="ui positive right floated button" type="submit">
       Voeg geschenk idee toe
     </button>
   </div>
