@@ -1,54 +1,56 @@
-<form class="ui segment form" [formGroup]='gift' (ngSubmit)='onSubmit()'>
-  <h3 class="ui dividing header">Voeg jouw geschenk idee toe:</h3>
+<div class="ui container">
+  <form class="ui segment form" [formGroup]='gift' (ngSubmit)='onSubmit()'>
+    <h3 class="ui dividing header">Voeg jouw geschenk idee toe:</h3>
 
-  <div class="field">
-    <label for="naam">Naam:</label>
-    <input id="naam" name="naam" #naamnieuwegift formControlName='naam'>
-    <div *ngIf='gift.get("naam").errors?.required && gift.get("naam").touched' class='ui pointing red basic label'>
-      Naam is een verplicht veld
+    <div class="field">
+      <label for="naam">Naam:</label>
+      <input id="naam" name="naam" #naamnieuwegift formControlName='naam'>
+      <div *ngIf='gift.get("naam").errors?.required && gift.get("naam").touched' class='ui pointing red basic label'>
+        Naam is een verplicht veld
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label for="beschrijving">Beschrijving:</label>
-    <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift formControlName='beschrijving'>
-    <div *ngIf='gift.get("beschrijving").errors?.required && gift.get("beschrijving").touched' class='ui pointing red basic label'>
-      Beschrijving is een verplicht veld
+    <div class="field">
+      <label for="beschrijving">Beschrijving:</label>
+      <input id="beschrijving" name="beschrijving" #beschrijvingnieuwegift formControlName='beschrijving'>
+      <div *ngIf='gift.get("beschrijving").errors?.required && gift.get("beschrijving").touched' class='ui pointing red basic label'>
+        Beschrijving is een verplicht veld
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label for="prijs">Prijs:</label>
-    <input id="prijs" name="prijs" #prijsnieuwegift formControlName='prijs'>
-    <div *ngIf='gift.get("prijs").errors?.required && gift.get("prijs").touched' class='ui pointing red basic label'>
-      Prijs is een verplicht veld
+    <div class="field">
+      <label for="prijs">Prijs:</label>
+      <input id="prijs" name="prijs" #prijsnieuwegift formControlName='prijs'>
+      <div *ngIf='gift.get("prijs").errors?.required && gift.get("prijs").touched' class='ui pointing red basic label'>
+        Prijs is een verplicht veld
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label for="categorie_naam">Categorieen:</label>
-    <div formArrayName='categorieen' *ngFor='let item of gift.get("categorieen").controls; let i = index'>
-      <div [formGroupName]='i'>
-        <div class='two fields'>
-          <div class="field">
-            <input type="text" id="categorie_naam" formControlName='categorienaam'>
-          </div>
-          <div class="field">
-            <select id="categorie_soort" formControlName='soort'>
-              <option *ngFor='let type of soortTypes' [value]='type'>
-                {{type}}
-              </option>
-            </select>
+    <div class="field">
+      <label for="categorie_naam">Categorieen:</label>
+      <div formArrayName='categorieen' *ngFor='let item of gift.get("categorieen").controls; let i = index'>
+        <div [formGroupName]='i'>
+          <div class='two fields'>
+            <div class="field">
+              <input type="text" id="categorie_naam" formControlName='categorienaam'>
+            </div>
+            <div class="field">
+              <select id="categorie_soort" formControlName='soort'>
+                <option *ngFor='let type of soortTypes' [value]='type'>
+                  {{type}}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <button class="ui positive right button" type="submit">
-    Voeg geschenk idee toe
-  </button>
-</form>
+    <button class="ui positive right button" type="submit">
+      Voeg geschenk idee toe
+    </button>
+  </form>
+</div>
 <!--REMOVE {{ gift.value | json }}
 <br> {{ gift.get("naam").errors | json }}
 <br> {{ gift.valid }} -->

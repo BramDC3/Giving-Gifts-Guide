@@ -1,0 +1,13 @@
+<div class="ui container">
+  <div *ngIf="errorMsg">{{errorMsg}}</div>
+  <div class="ui basic segment">
+    <div>
+      <input type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
+    </div>
+    <div class="ui basic segment">
+      <div class="ui cards">
+        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
+      </div>
+    </div>
+  </div>
+</div>

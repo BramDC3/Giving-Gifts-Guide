@@ -3,6 +3,8 @@ import { Gift } from '../gift/gift.model';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Categorie } from '../categorie/categorie.model';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { GiftDataService } from '../gift-data.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-voeg-gift-toe',
@@ -13,8 +15,9 @@ export class VoegGiftToeComponent implements OnInit {
   public readonly soortTypes = ['Normaal', 'Speciaal', 'Feestdag'];
   @Output() public nieuweGift = new EventEmitter<Gift>();
   private gift: FormGroup;
+  errorMsg: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private _giftDataService: GiftDataService) { }
 
   get categorieen(): FormArray {
     return <FormArray>this.gift.get('categorieen');
@@ -52,6 +55,11 @@ export class VoegGiftToeComponent implements OnInit {
         gift.voegCategorieToe(new Categorie(cat.categorienaam, cat.soort));
       }
     }
-    this.nieuweGift.emit(gift);
+    this._giftDataService.voegNieuweGiftToe(gift).subscribe(
+      item => {},
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${error.status} bij het toevoegen van de gift ${gift.naam}: ${error.error}`;
+      }
+    );
   }
 }
