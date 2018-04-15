@@ -41,7 +41,7 @@ export class VoegGiftToeComponent implements OnInit {
   maakCategorieen(): FormGroup {
     return this.fb.group({
       categorienaam: ['', [Validators.required, Validators.minLength(3)]],
-      soort: ['']
+      soort: ['Normaal']
     })
   }
 
