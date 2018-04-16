@@ -1,10 +1,9 @@
 <div class="ui card">
   <div class="content">
     <div class="header">
-      <p>Geschenk met naam {{gift._naam}}</p>
+      <a routerLinkActive='active' routerLink="/gift/{{gift._id}}">Geschenk met naam {{gift._naam}}</a>
     </div>
     <div class="meta">
-      <p>ID: {{gift._id}}</p>
       <p>Beschrijving: {{gift._beschrijving}}</p>
       <p>Prijs: &euro; {{gift._prijs}}</p>
     </div>

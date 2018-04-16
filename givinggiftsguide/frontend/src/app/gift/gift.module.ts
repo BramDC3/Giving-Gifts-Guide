@@ -13,10 +13,11 @@ import { PageNotFoundComponent } from "../page-not-found/page-not-found.componen
 import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { GiftResolver } from "./gift/gift-resolver";
 import { httpInterceptorProviders } from "../http-interceptors";
+import { AuthGuardService } from "../user/auth-guard.service";
 
 const routes: Routes = [
     { path: 'list', component: GiftListComponent },
-    { path: 'toevoegen', component: VoegGiftToeComponent },
+    { path: 'toevoegen', component: VoegGiftToeComponent, canActivate: [AuthGuardService], },
     { path: ':id', component: GiftDetailComponent, resolve: { gift: GiftResolver } }
   ];
 

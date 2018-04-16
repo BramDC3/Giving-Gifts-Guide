@@ -8,7 +8,6 @@ import { AuthGuardService } from '../user/auth-guard.service';
 const appRoutes: Routes = [
   {
     path: 'gift',
-    canActivate: [AuthGuardService],
     loadChildren: 'app/gift/gift.module#GiftModule',
     data: { preload: true }
   },
