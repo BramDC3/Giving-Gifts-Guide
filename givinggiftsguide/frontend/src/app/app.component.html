@@ -1,2 +1,9 @@
-<app-gift-list></app-gift-list>
-<app-voeg-gift-toe></app-voeg-gift-toe>
+<div class="ui container">
+    <div class="ui two item menu">
+      <a class='item' routerLinkActive='active' 
+        routerLink="/gift/list" >Gifts</a>
+      <a class='item' routerLinkActive='active' 
+        routerLink="/gift/toevoegen" >Voeg gift toe</a>
+    </div>
+    <router-outlet></router-outlet>
+  </div>

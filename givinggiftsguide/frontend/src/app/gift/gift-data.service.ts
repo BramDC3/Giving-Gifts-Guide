@@ -34,4 +34,9 @@ export class GiftDataService {
     return this.http.post(theUrl, cat).pipe(map(Categorie.fromJSON));
   }
 
+  getGift(id: string) {
+    const theUrl = `${this._appUrl}/gift/${id}`;
+    return this.http.get(theUrl).pipe(map(Gift.fromJSON));
+  }
+
 }
