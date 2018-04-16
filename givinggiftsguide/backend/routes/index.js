@@ -5,6 +5,10 @@ let mongoose = require('mongoose');
 let Gift = mongoose.model('Gift');
 let Categorie = mongoose.model('Categorie');
 
+let jwt = require('express-jwt');
+
+let auth = jwt({secret: process.env.GIFT_BACKEND_SECRET});
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.send('server works');
@@ -57,7 +61,7 @@ router.post('/API/gifts/', function (req, res, next) {
 });
 
 /* POST voeg categorie toe aan bestaande gift */
-router.post('/API/gift/:gift/categorieen', function (req, res, next) {
+router.post('/API/gift/:gift/categorieen', auth, function (req, res, next) {
   let cat = new Categorie(req.body);
 
   cat.save(function (err, categorie) {
@@ -75,7 +79,7 @@ router.post('/API/gift/:gift/categorieen', function (req, res, next) {
 });
 
 /* DELETE gift with id */
-router.delete('/API/gift/:gift', function (req, res, next) {
+router.delete('/API/gift/:gift', auth, function (req, res, next) {
   Categorie.remove({ _id: { $in: req.gift.categorieen } },
     function (err) {
       if (err) return next(err);
