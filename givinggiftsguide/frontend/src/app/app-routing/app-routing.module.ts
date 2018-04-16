@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
+import { AuthGuardService } from '../user/auth-guard.service';
 
 const appRoutes: Routes = [
   {
     path: 'gift',
+    canActivate: [AuthGuardService],
     loadChildren: 'app/gift/gift.module#GiftModule',
     data: { preload: true }
   },

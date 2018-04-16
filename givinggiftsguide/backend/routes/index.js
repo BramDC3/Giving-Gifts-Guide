@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
 let mongoose = require('mongoose');
 let Gift = mongoose.model('Gift');
 let Categorie = mongoose.model('Categorie');
-
 let jwt = require('express-jwt');
-
-let auth = jwt({secret: process.env.GIFT_BACKEND_SECRET});
+let auth = jwt({
+  secret: process.env.GIFT_BACKEND_SECRET
+});
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -39,7 +38,7 @@ router.get('/API/gift/:gift', function (req, res, next) {
 });
 
 /* POST new gift */
-router.post('/API/gifts/', function (req, res, next) {
+router.post('/API/gifts/', auth, function (req, res, next) {
   Categorie.create(req.body.categorieen, function (err, ctgn) {
     if (err) {
       return next(err);

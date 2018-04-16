@@ -12,6 +12,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { GiftResolver } from "./gift/gift-resolver";
+import { httpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes = [
     { path: 'list', component: GiftListComponent },
@@ -34,6 +35,6 @@ const routes: Routes = [
         GiftListComponent,
         GiftDetailComponent
     ],
-    providers: [ GiftDataService, GiftResolver ]
+    providers: [ httpInterceptorProviders, GiftDataService, GiftResolver ]
 })
 export class GiftModule { }
