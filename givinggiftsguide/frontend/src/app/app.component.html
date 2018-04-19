@@ -1,11 +1,27 @@
-<div class="ui container">
-  <div class="ui three item menu">
-    <a class='item' routerLinkActive='active' routerLink="gift/list">Gifts</a>
-    <a class='item' routerLinkActive='active' routerLink="gift/toevoegen">Voeg gift toe</a>
-    <a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
-    <ng-template #loginlink>
+<!-- Header Begin -->
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <a class="item" routerLinkActive='active' routerLink="gift/list"><i class="gift icon"></i> Gifts</a>
+    <a class="item" routerLinkActive='active' routerLink="gift/toevoegen"><i class="plus circle icon"></i> Gift toevoegen</a>
+
+    <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">Welkom, {{currentUser|async}}</a>
+
+    <div *ngIf='!(currentUser | async)' class="right menu">
+      <a class="item" routerLinkActive='active' routerLink="/register">Registreer</a>
       <a class="item" routerLinkActive='active' routerLink="/login">Log in</a>
-    </ng-template>
+    </div>
+    
   </div>
-  <router-outlet></router-outlet>
 </div>
+
+<!-- Body Begin -->
+<router-outlet></router-outlet>
+<!-- Body Einde -->
+
+<!-- Footer Begin -->
+<div class="ui inverted vertical footer segment">
+  <div class="ui center aligned container">
+    <p>&copy; Copyright 2018 | Bram De Coninck | Alle rechten voorbehouden</p>
+  </div>
+</div>
+<!-- Footer Einde -->
