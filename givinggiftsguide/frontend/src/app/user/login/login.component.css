@@ -1,0 +1,16 @@
+  .lichaam {
+    background-color: #DADADA;
+    height: 100%;
+  }
+  .lichaam > .grid {
+    height: 100%;
+  }
+  .lichaam > .container {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 650px;
+  }
