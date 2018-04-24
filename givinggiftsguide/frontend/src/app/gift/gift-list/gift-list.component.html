@@ -1,8 +1,9 @@
 <div class="ui container">
   <div *ngIf="errorMsg">{{errorMsg}}</div>
   <div class="ui basic segment">
-    <div>
-      <input type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
+    <div class="ui search">
+      <input class="ui icon input" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
+      <i class="search icon"></i>
     </div>
     <div class="ui basic segment">
       <div class="ui cards">

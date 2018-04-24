@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         val => {
           if (val) {
-            this.router.navigate(['/recipe/list']);
+            this.router.navigate(['/gift/list']);
           }
         },
         (error: HttpErrorResponse) => {

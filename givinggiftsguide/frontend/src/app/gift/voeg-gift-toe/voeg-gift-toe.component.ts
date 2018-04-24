@@ -37,7 +37,17 @@ export class VoegGiftToeComponent implements OnInit {
         const lastElement = catList[catList.length - 1];
         if ( lastElement.categorienaam &&
           lastElement.categorienaam.length > 2 ) 
-          { this.categorieen.push(this.maakCategorieen()); }
+          { this.categorieen.push(this.maakCategorieen());
+          } else if (catList.length >= 2) {
+            const secondToLast = catList[catList.length - 2];
+            if (
+              !lastElement.categorienaam &&
+              (!secondToLast.categorienaam ||
+                secondToLast.categorienaam.length < 2)
+            ) {
+              this.categorieen.removeAt(this.categorieen.length - 1);
+            }
+          }
       });
   }
 

@@ -1,32 +1,11 @@
-
-<div class="lichaam">
-  <div class="ui middle aligned container">
-    <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
-    <form [formGroup]='user' (ngSubmit)='onSubmit()' class="ui large form segment">
-      <h3 class="ui header">Login</h3>
-      <div class="field">
-        <label for="username">Gebruikersnaam:</label>
-        <input type="text" id="username" formControlName='username'>
-      </div>
-      <div class="field">
-        <label for="password">Wachtwoord:</label>
-        <input type="password" id="password" formControlName='password'>
-      </div>
-      <button type='submit' [disabled]='!user.valid' class="ui positive right floated button" id='loginbtn'>Log in</button>
-    </form>
-    <a class='item' routerLink="/register">Registreer</a>
-  </div>
-</div>
-
-
-<!--
 <div class="lichaam">
   <div class="ui middle aligned center aligned grid">
     <div class="column">
-      <h1 class="ui teal image header">
+      <h1 class="ui image header">
         <img class="image" src="/assets/giftbox.png">
         <div class="content">Log in met je account</div>
       </h1>
+      <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
       <form [formGroup]='user' (ngSubmit)='onSubmit()' class="ui large form">
         <div class="ui stacked segment">
           <div class="field">
@@ -41,15 +20,13 @@
               <input name="password" placeholder="Wachtwoord" type="password" formControlName='password'>
             </div>
           </div>
-          <div class="ui fluid large teal submit button after" id='loginbtn'>Log in</div>
+          <button type='submit' [disabled]='!user.valid' class="ui fluid large primary button" id='loginbtn'>Log in</button>
         </div>
-        <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
       </form>
       <div class="ui message">
-        Nieuw op deze website?
+        Heeft je nog geen account?
         <a class='item' routerLink="/register">Registreer</a>
       </div>
     </div>
   </div>
 </div>
--->

@@ -3,3 +3,25 @@
     border-left: 5px solid #a94442 !important; 
 }
 */
+
+.lichaam {
+    background-color: rgba(9, 156, 248, 0.7);
+    height: 100%;
+    text-align: left !important;
+  }
+  .lichaam > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 850px;
+  }
+  .content {
+    color: white;
+  }
+
+  .ui.grid > .row > [class*="center aligned"].column.column, .ui.grid > [class*="center aligned"].column.column, .ui.grid > [class*="center aligned"].row > .column, .ui[class*="center aligned"].grid > .column, .ui[class*="center aligned"].grid > .row > .column {
+    text-align: left;
+  }
