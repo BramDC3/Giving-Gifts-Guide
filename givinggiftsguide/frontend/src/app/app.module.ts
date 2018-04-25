@@ -6,9 +6,10 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, HeaderComponent],
   imports: [
     BrowserModule,
     UserModule,
