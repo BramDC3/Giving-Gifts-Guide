@@ -3,7 +3,7 @@
     <div class="column">
       <h1 class="ui image header">
         <img class="image" src="/assets/giftbox.png">
-        <div class="content">Log in met je account</div>
+        <div class="content">Log in met uw account</div>
       </h1>
       <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
       <form [formGroup]='user' (ngSubmit)='onSubmit()' class="ui large form">
@@ -24,7 +24,7 @@
         </div>
       </form>
       <div class="ui message">
-        Heeft je nog geen account?
+        Heeft u nog geen account?
         <a class='item' routerLink="/register">Registreer</a>
       </div>
     </div>
