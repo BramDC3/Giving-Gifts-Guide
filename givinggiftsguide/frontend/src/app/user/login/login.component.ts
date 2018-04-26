@@ -54,18 +54,16 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/gift/list']);
             }
           } else {
-            this.errorMsg = `Could not login`;
+            this.errorMsg = `Er is een fout opgetreden tijdens het aanmelden.`;
           }
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
-            this.errorMsg = `Error while trying to login user ${
+            this.errorMsg = `Er is een fout opgetreden tijdens het aanmelden van gebruiker ${
               this.user.value.username
               }: ${err.error.message}`;
           } else {
-            this.errorMsg = `Error ${err.status} while trying to login user ${
-              this.user.value.username
-              }: ${err.error}`;
+            this.errorMsg = `Uw gebruikersnaam en/of wachtwoord is fout. Gelieve het opnieuw te proberen.`;
           }
         }
       );

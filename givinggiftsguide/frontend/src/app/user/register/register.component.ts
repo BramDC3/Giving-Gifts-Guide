@@ -95,11 +95,7 @@ export class RegisterComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          this.errorMsg = `Error ${
-            error.status
-          } while trying to register user ${this.user.value.username}: ${
-            error.error
-          }`;
+          this.errorMsg = `Er is een fout opgetreden tijdens het registeren. Gelieve het opnieuw te proberen.`;
         }
       );
   }
