@@ -10,10 +10,13 @@
       <i class="gift icon"></i> Gifts</a>
     <a class="item" routerLinkActive='active' routerLink="gift/toevoegen">
       <i class="plus circle icon"></i> Gift toevoegen</a>
-    <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">Welkom, {{currentUser|async}}</a>
+    <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">
+      <i class="user circle icon"></i> {{currentUser|async}}</a>
     <div *ngIf='!(currentUser | async)' class="right menu">
-      <a class="item" routerLinkActive='active' routerLink="/login">Log in</a>
-      <a class="item" routerLinkActive='active' routerLink="/register">Registreer</a>
+      <a class="item" routerLinkActive='active' routerLink="/login">
+        <i class="id badge icon"></i> Log in</a>
+      <a class="item" routerLinkActive='active' routerLink="/register">
+        <i class="address card icon"></i> Registreer</a>
     </div>
   </div>
 </div>
