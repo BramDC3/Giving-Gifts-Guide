@@ -1,7 +1,6 @@
   .container {
     padding-top: 10%;
   }
-
   .lichaam {
     background-color: rgba(9, 156, 248, 0.7);
     height: 100%;
@@ -17,4 +16,32 @@
   }
   .content {
     color: white;
+  }
+  .grid {
+    padding-top: 4%;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  ::-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  .formerize-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
   }

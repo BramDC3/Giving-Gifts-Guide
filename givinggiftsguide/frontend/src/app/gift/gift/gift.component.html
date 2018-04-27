@@ -1,18 +1,13 @@
 <div class="ui card">
   <div class="content">
     <div class="header">
-      <a routerLinkActive='active' routerLink="/gift/{{gift._id}}">Geschenk met naam {{gift._naam}}</a>
+      <a routerLinkActive='active' routerLink="/gift/{{gift._id}}">{{gift._naam}}</a>
     </div>
     <div class="meta">
       <p>Beschrijving: {{gift._beschrijving}}</p>
       <p>Prijs: &euro; {{gift._prijs}}</p>
     </div>
     <div class="description">
-      <ul>
-        <li *ngFor="let cat of gift._categorieen">
-          <app-categorie [categorie]='cat'></app-categorie>
-        </li>
-      </ul>
     </div>
     <div class="meta">
       <p>Aanmaakdatum: {{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>

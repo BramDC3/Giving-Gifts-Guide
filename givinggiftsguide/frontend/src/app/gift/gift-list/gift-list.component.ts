@@ -44,9 +44,7 @@ export class GiftListComponent implements OnInit {
     this._giftDataService.verwijderGift(gift)
       .subscribe(item => (this._gifts = this._gifts.filter(val => item.id !== val.id)),
         (error: HttpErrorResponse) => {
-          this.errorMsg = `Error ${error.status} while removing gifts for ${
-            gift.naam
-            }: ${error.error}`;
+          this.errorMsg = `Er is een fout opgetreden tijdens het verwijderen van deze gift.`;
         }
       );
   }

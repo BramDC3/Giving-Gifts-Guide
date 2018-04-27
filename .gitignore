@@ -1,0 +1,9 @@
+# Project related
+node_modules
+
+# IDE
+.idea
+
+# Dependency manager
+yarn.lock
+yarn-error.log

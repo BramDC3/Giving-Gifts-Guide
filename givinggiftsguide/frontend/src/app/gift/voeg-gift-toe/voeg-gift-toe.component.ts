@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./voeg-gift-toe.component.css']
 })
 export class VoegGiftToeComponent implements OnInit {
-  public readonly soortTypes = ['Normaal', 'Speciaal', 'Feestdag'];
+  public readonly soortTypes = ['Normaal', 'Promotie', 'Feestdag'];
   @Output() public nieuweGift = new EventEmitter<Gift>();
   private gift: FormGroup;
   errorMsg: string;
@@ -70,7 +70,7 @@ export class VoegGiftToeComponent implements OnInit {
       this._giftDataService.voegNieuweGiftToe(gift).subscribe(
         item => { },
         (error: HttpErrorResponse) => {
-          this.errorMsg = `Error ${error.status} bij het toevoegen van de gift ${gift.naam}: ${error.error}`;
+          this.errorMsg = `Er is een fout opgetreden bij het toevoegen van de gift ${gift.naam}`;
         }
       );
     }

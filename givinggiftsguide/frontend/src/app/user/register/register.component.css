@@ -18,3 +18,28 @@
   .wachtwoordgroep {
     padding-bottom: 20px;
   }
+
+  ::-webkit-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  ::-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  .formerize-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }

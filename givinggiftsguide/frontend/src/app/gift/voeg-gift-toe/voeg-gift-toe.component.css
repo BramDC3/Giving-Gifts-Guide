@@ -26,3 +26,28 @@
   .ui.form .field > label {
     text-align: left;
   }
+
+  ::-webkit-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  ::-moz-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
+  
+  .formerize-placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+  }
