@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.10",
     "@angular/platform-browser-dynamic": "^5.2.10",
     "@angular/router": "^5.2.10",
+    "angular-infinite-list": "^0.3.7",
     "core-js": "^2.5.5",
     "rxjs": "^5.5.10",
     "semantic-ui-css": "^2.3.1",

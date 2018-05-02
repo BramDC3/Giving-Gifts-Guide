@@ -1,6 +1,3 @@
-  .container {
-    padding-top: 10%;
-  }
   .lichaam {
     background-color: rgba(9, 156, 248, 0.7);
     height: 100%;
@@ -8,17 +5,8 @@
   .lichaam > .grid {
     height: 100%;
   }
-  .image {
-    margin-top: -100px;
-  }
-  .column {
-    max-width: 650px;
-  }
   .content {
     color: white;
-  }
-  .grid {
-    padding-top: 4%;
   }
 
   ::-webkit-input-placeholder {

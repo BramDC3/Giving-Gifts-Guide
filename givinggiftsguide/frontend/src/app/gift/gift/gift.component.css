@@ -1,3 +1,7 @@
 .ui.card {
     margin: 10px;
 }
+
+p {
+    text-align: left;
+}

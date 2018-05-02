@@ -15,6 +15,7 @@ export class GiftListComponent implements OnInit {
   public filterGift$ = new Subject<string>();
   public errorMsg: string;
   private _gifts: Gift[];
+  private page: number;
 
   constructor(private _giftDataService: GiftDataService) {
     this.filterGift$
@@ -24,6 +25,7 @@ export class GiftListComponent implements OnInit {
         map(val => val.toLowerCase())
       )
       .subscribe(val => this.filterGiftName = val);
+    this.page = 0;
   }
 
   ngOnInit() {
@@ -33,6 +35,23 @@ export class GiftListComponent implements OnInit {
 
   get gifts() {
     return this._gifts;
+  }
+
+  get giftsGrootte() {
+    if (this._gifts.length % 6 != 0)
+      return Math.floor(this._gifts.length / 6) + 1;
+    else
+      return this._gifts.length / 6;
+  }
+
+  verkleinGiftsGrootte() {
+    if (this.page > 0)
+      this.page -= 1;
+  }
+
+  verhoogGiftsGrootte() {
+    if (this.page < this.giftsGrootte - 1)
+      this.page += 1;
   }
 
   nieuweGiftToegevoegd(gift) {

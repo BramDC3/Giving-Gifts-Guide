@@ -2,53 +2,56 @@
   <div class="ui middle aligned center aligned grid container">
 
     <div class="three wide column">
+      <select class="ui fluid dropdown">
+        <option value="">Giftcategorie</option>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select>
+    </div>
+    <div class="three wide column">
+      <div class="three wide column">
+        <select class="ui fluid dropdown">
+          <option value="">Giftsoort</option>
+          <option value="0">Normaal</option>
+          <option value="1">Promotie</option>
+          <option value="2">Feestdag</option>
+        </select>
+      </div>
+    </div>
+    <div class="four wide column">
       <div class="ui search">
-        <div class="ui icon input focus">
+        <div class="ui fluid icon input focus">
           <input class="prompt" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
           <i class="search icon"></i>
         </div>
       </div>
     </div>
     <div class="three wide column">
-      <div class="ui left icon input focus">
+      <div class="ui fluid left icon input focus">
         <input placeholder="Minimumprijs" type="text">
         <i class="euro icon"></i>
       </div>
     </div>
     <div class="three wide column">
-      <div class="ui left icon input focus">
+      <div class="ui fluid left icon input focus">
         <input placeholder="Maximumprijs" type="text">
         <i class="euro icon"></i>
       </div>
     </div>
-    <div class="three wide column">
-      <div class="ui selection dropdown">
-        <input name="gender" type="hidden">
-        <i class="dropdown icon"></i>
-        <div class="default text">Gender</div>
-        <div class="menu">
-          <div class="item" data-value="1">Male</div>
-          <div class="item" data-value="0">Female</div>
-        </div>
-      </div>
-    </div>
-
-
     <div class="ui basic segment">
-      <div class="ui cards">
-        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
+      <div class="ui centered cards">
+        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*6:page*6+6' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
       </div>
     </div>
-
-
-
-    <div class="onder">
-
-    </div>
-
+    <button class="ui icon button" (click)="verkleinGiftsGrootte()">
+      <i class="big arrow alternate circle left icon"></i>
+    </button>
+    <p>{{page + 1}} / {{giftsGrootte}}</p>
+    <button class="ui icon button" (click)="verhoogGiftsGrootte()">
+      <i class="big arrow alternate circle right icon"></i>
+    </button>
   </div>
 </div>
-
 
 
 <!--

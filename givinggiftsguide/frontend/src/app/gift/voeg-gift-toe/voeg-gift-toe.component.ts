@@ -13,6 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class VoegGiftToeComponent implements OnInit {
   public readonly soortTypes = ['Normaal', 'Promotie', 'Feestdag'];
+  public readonly categorieLijst = ['Normaal', 'Promotie', 'Feestdag'];
   @Output() public nieuweGift = new EventEmitter<Gift>();
   private gift: FormGroup;
   errorMsg: string;
