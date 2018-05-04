@@ -37,7 +37,11 @@
             <div [formGroupName]='i'>
               <div class='two fields'>
                 <div class="field">
-                  <input type="text" id="categorie_naam" placeholder="Categorienaam" formControlName='categorienaam'>
+                  <select id="categorie_naam" formControlName='categorienaam'>
+                    <option *ngFor='let type of categorieLijst' [value]='type'>
+                      {{type}}
+                    </option>
+                  </select>
                 </div>
                 <div class="field">
                   <select id="categorie_soort" formControlName='soort'>

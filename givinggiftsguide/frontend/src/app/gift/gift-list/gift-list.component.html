@@ -1,22 +1,117 @@
 <div class="lichaam">
+  <div class="ui horizontal segments">
+    <div class="ui segment">
+      <select class="ui fluid dropdown">
+        <option value="">Giftcategorie</option>
+        <option value="0">Boeken</option>
+        <option value="1">Muziek</option>
+        <option value="2">Films & Series</option>
+        <option value="3">Games</option>
+        <option value="4">Computers</option>
+        <option value="5">Elektronica</option>
+        <option value="6">Speelgoed & Hobby</option>
+        <option value="7">Baby, Kind & Mama</option>
+        <option value="8">Mooi & Gezond</option>
+        <option value="9">Juwelen & Accessoires</option>
+        <option value="10">Sport & Vrije tijd</option>
+        <option value="11">Kantoor & School</option>
+        <option value="12">Wonen & Koken</option>
+        <option value="13">Tuin & Klussen</option>
+        <option value="14">Dieren</option>
+      </select>
+    </div>
+
+    <div class="ui compact segment">
+      <select class="ui fluid dropdown">
+        <option value="">Giftsoort</option>
+        <option value="0">Normaal</option>
+        <option value="1">Promotie</option>
+        <option value="2">Feestdag</option>
+      </select>
+    </div>
+
+    <div class="ui segment">
+      <div class="ui search">
+        <div class="ui fluid icon input focus">
+          <input class="prompt" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
+          <i class="search icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui segment">
+      <div class="ui fluid left icon input focus">
+        <input placeholder="Minimumprijs" type="text">
+        <i class="euro icon"></i>
+      </div>
+    </div>
+
+    <div class="ui segment">
+      <div class="ui fluid left icon input focus">
+        <input placeholder="Maximumprijs" type="text">
+        <i class="euro icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui fluid container">
+    <div class="ui basic segment">
+      <div class="ui centered cards">
+        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*9:page*9+9' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui middle aligned center aligned grid">
+    <div class="ui horizontal segments">
+      <div class="ui segment">
+        <button class="ui icon button" (click)="verkleinGiftsGrootte()">
+          <i class="big arrow alternate circle left icon"></i>
+        </button>
+      </div>
+      <div class="ui segment">
+        <p>Pagina {{page + 1}} / {{giftsGrootte}}</p>
+      </div>
+      <div class="ui segment">
+        <button class="ui icon button" (click)="verhoogGiftsGrootte()">
+          <i class="big arrow alternate circle right icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="lichaam">
   <div class="ui middle aligned center aligned grid container">
 
     <div class="three wide column">
       <select class="ui fluid dropdown">
         <option value="">Giftcategorie</option>
-        <option value="1">Male</option>
-        <option value="0">Female</option>
+        <option value="0">Boeken</option>
+        <option value="1">Muziek</option>
+        <option value="2">Films & Series</option>
+        <option value="3">Games</option>
+        <option value="4">Computers</option>
+        <option value="5">Elektronica</option>
+        <option value="6">Speelgoed & Hobby</option>
+        <option value="7">Baby, Kind & Mama</option>
+        <option value="8">Mooi & Gezond</option>
+        <option value="9">Juwelen & Accessoires</option>
+        <option value="10">Sport & Vrije tijd</option>
+        <option value="11">Kantoor & School</option>
+        <option value="12">Wonen & Koken</option>
+        <option value="13">Tuin & Klussen</option>
+        <option value="14">Dieren</option>
       </select>
     </div>
     <div class="three wide column">
-      <div class="three wide column">
         <select class="ui fluid dropdown">
           <option value="">Giftsoort</option>
           <option value="0">Normaal</option>
           <option value="1">Promotie</option>
           <option value="2">Feestdag</option>
         </select>
-      </div>
     </div>
     <div class="four wide column">
       <div class="ui search">
@@ -54,7 +149,7 @@
 </div>
 
 
-<!--
+
   <div class="lichaam">
   <div class="ui grid container">
     <div *ngIf="errorMsg">{{errorMsg}}</div>

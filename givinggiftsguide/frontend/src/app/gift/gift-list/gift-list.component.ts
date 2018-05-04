@@ -38,10 +38,10 @@ export class GiftListComponent implements OnInit {
   }
 
   get giftsGrootte() {
-    if (this._gifts.length % 6 != 0)
-      return Math.floor(this._gifts.length / 6) + 1;
+    if (this.gifts.length % 9 != 0)
+      return Math.floor(this._gifts.length / 9) + 1;
     else
-      return this._gifts.length / 6;
+      return this.gifts.length / 9;
   }
 
   verkleinGiftsGrootte() {

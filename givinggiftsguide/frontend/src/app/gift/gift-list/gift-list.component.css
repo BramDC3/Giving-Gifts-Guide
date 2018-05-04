@@ -2,12 +2,6 @@
     background-color: rgba(9, 156, 248, 0.7);
     height: 100%;
   }
-  .lichaam > .grid {
-    height: 100%;
-  }
-  .content {
-    color: white;
-  }
 
   ::-webkit-input-placeholder {
     color: #aaaaaa !important;
@@ -32,4 +26,8 @@
   .formerize-placeholder {
     color: #aaaaaa !important;
     opacity: 1;
+  }
+
+  .ui.horizontal.segments {
+    margin-top: 52.6px
   }
