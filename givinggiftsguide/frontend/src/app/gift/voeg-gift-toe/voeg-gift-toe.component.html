@@ -13,6 +13,14 @@
           <div *ngIf='gift.get("naam").errors?.required && gift.get("naam").touched' class='ui pointing red basic label'>
             Naam is een verplicht veld
           </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("naam").errors?.minlength && gift.get("naam").touched'>
+            De naam is te kort, gelieve minstens {{gift.get("naam").errors?.minlength.requiredLength}} karakters te gebruiken (momenteel
+            {{gift.get("naam").errors?.minlength.actualLength}} karakter(s))
+          </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("naam").errors?.maxlength && gift.get("naam").touched'>
+            De naam is te lang, gelieve maximaal {{gift.get("naam").errors?.maxlength.requiredLength}} karakters te gebruiken (momenteel
+            {{gift.get("naam").errors?.maxlength.actualLength}} karakters)
+          </div>
         </div>
 
         <div class="field">
@@ -21,6 +29,14 @@
           <div *ngIf='gift.get("beschrijving").errors?.required && gift.get("beschrijving").touched' class='ui pointing red basic label'>
             Beschrijving is een verplicht veld
           </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("beschrijving").errors?.minlength && gift.get("beschrijving").touched'>
+            De beschrijving is te kort, gelieve minstens {{gift.get("beschrijving").errors?.minlength.requiredLength}} karakters te gebruiken
+            (momenteel {{gift.get("beschrijving").errors?.minlength.actualLength}} karakter(s))
+          </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("beschrijving").errors?.maxlength && gift.get("beschrijving").touched'>
+            De beschrijving is te lang, gelieve maximaal {{gift.get("beschrijving").errors?.maxlength.requiredLength}} karakters te gebruiken
+            (momenteel {{gift.get("beschrijving").errors?.maxlength.actualLength}} karakters)
+          </div>
         </div>
 
         <div class="field">
@@ -28,6 +44,15 @@
           <input id="prijs" name="prijs" placeholder="Gift prijs" #prijsnieuwegift formControlName='prijs'>
           <div *ngIf='gift.get("prijs").errors?.required && gift.get("prijs").touched' class='ui pointing red basic label'>
             Prijs is een verplicht veld
+          </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("prijs").errors?.min && gift.get("prijs").touched'>
+            Het bedrag is te klein, gelieve minstens een bedrag van € 1 te kiezen
+          </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("prijs").errors?.max && gift.get("prijs").touched'>
+            Het bedrag is te groot, gelieve maximaal een bedrag van € 9999 te kiezen
+          </div>
+          <div class='ui pointing red basic label' *ngIf='gift.get("prijs").errors?.pattern && gift.get("prijs").touched'>
+            De ingevoerde waarde is geen geldige prijs. Gelieve enkel cijfers te gebruiken (geen punt, geen komma, geen €, ...)
           </div>
         </div>
 

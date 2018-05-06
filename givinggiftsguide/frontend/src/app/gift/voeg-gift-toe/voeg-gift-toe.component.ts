@@ -28,7 +28,7 @@ export class VoegGiftToeComponent implements OnInit {
     this.gift = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       beschrijving: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]],
-      prijs: ['', [Validators.required, Validators.min(1), Validators.max(9999)]],
+      prijs: ['', [Validators.required, Validators.min(1), Validators.max(9999), Validators.pattern('^[0-9]*')]],
       categorieen: this.fb.array([this.maakCategorieen()])
     });
 
@@ -36,9 +36,11 @@ export class VoegGiftToeComponent implements OnInit {
       .pipe(debounceTime(400), distinctUntilChanged())
       .subscribe(catList => {
         const lastElement = catList[catList.length - 1];
-        if (lastElement.categorienaam &&
-          lastElement.categorienaam.length > 2) {
-          this.categorieen.push(this.maakCategorieen());
+        if (catList.length < 3) {
+          if (lastElement.categorienaam &&
+            lastElement.categorienaam.length > 2) {
+            this.categorieen.push(this.maakCategorieen());
+          }
         } else if (catList.length >= 2) {
           const secondToLast = catList[catList.length - 2];
           if (
@@ -61,7 +63,7 @@ export class VoegGiftToeComponent implements OnInit {
 
   onSubmit() {
     if (this.gift.value.naam != null && this.gift.value.naam != "" && this.gift.value.beschrijving != null && this.gift.value.beschrijving != "" && this.gift.value.prijs != null && this.gift.value.prijs != "" &&
-        this.gift.value.naam.length >= 3 && this.gift.value.naam.length <= 40 && this.gift.value.beschrijving.length >= 10 && this.gift.value.beschrijving.length <= 150 && this.gift.value.prijs >= 1 && this.gift.value.prijs <= 9999) {
+      this.gift.value.naam.length >= 3 && this.gift.value.naam.length <= 40 && this.gift.value.beschrijving.length >= 10 && this.gift.value.beschrijving.length <= 150 && this.gift.value.prijs >= 1 && this.gift.value.prijs <= 9999) {
       const gift = new Gift(this.gift.value.naam, this.gift.value.beschrijving, this.gift.value.prijs);
       for (const cat of this.gift.value.categorieen) {
         if (cat.categorienaam.length > 2) {
