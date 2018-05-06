@@ -15,4 +15,27 @@ export class GiftFilterPipe implements PipeTransform {
     );
   }
 
+  /*
+  transform(gifts: Gift[], naam: string): Gift[] {
+    if (!naam || naam.length === 0) {
+      return gifts.sort((g1, g2) => {
+        if (g1.likes > g2.likes)
+          return 1;
+        if (g1.likes < g2.likes)
+          return -1;
+        return 0;
+      });
+    }
+    return gifts.filter(gift =>
+      gift.naam.toLowerCase().includes(naam.toLowerCase())
+    ).sort((g1, g2) => {
+      if (g1.likes > g2.likes)
+        return 1;
+      if (g1.likes < g2.likes)
+        return -1;
+      return 0;
+    });
+  }
+  */
+
 }

@@ -1,0 +1,53 @@
+/*
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442 !important; 
+}
+*/
+
+.lichaam {
+  background-color: rgba(9, 156, 248, 0.7);
+  height: 100%;
+  text-align: left !important;
+}
+.lichaam > .grid {
+  height: 100%;
+}
+.image {
+  margin-top: -100px;
+}
+.column {
+  max-width: 850px;
+}
+.content {
+  color: white;
+  text-align: center !important;
+}
+
+.ui.form .field > label {
+  text-align: left;
+}
+
+::-webkit-input-placeholder {
+  color: #aaaaaa !important;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: #aaaaaa !important;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: #aaaaaa !important;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #aaaaaa !important;
+  opacity: 1;
+}
+
+.formerize-placeholder {
+  color: #aaaaaa !important;
+  opacity: 1;
+}

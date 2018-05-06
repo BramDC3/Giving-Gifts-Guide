@@ -1,3 +1,32 @@
-<p>
-  {{gift.naam}}
-</p>
+<div class="lichaam">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui image header">
+        <img class="image" src="/assets/giftbox.png">
+        <div class="content">{{gift.naam}}</div>
+      </h2>
+      <form class="ui segment form" [formGroup]='giftFG'>
+
+        <div class="field">
+          <label class="ui center aligned" for="naam">Naam:</label>
+          <input id="naam" name="naam" placeholder="Gift naam" value="kaka" #naamgift formControlName='naam' readonly>
+        </div>
+
+        <div class="field">
+          <label for="beschrijving">Beschrijving:</label>
+          <input id="beschrijving" name="beschrijving" placeholder="Gift beschrijving" #beschrijvinggift formControlName='beschrijving'
+            readonly>
+        </div>
+
+        <div class="field">
+          <label for="prijs">Prijs:</label>
+          <input id="prijs" name="prijs" placeholder="Gift prijs" #prijsgift formControlName='prijs' readonly>
+        </div>
+      </form>
+      <div class="ui message">
+        Heeft u nog geen account?
+        <a class='item' routerLink="/register">Registreer</a>
+      </div>
+    </div>
+  </div>
+</div>
