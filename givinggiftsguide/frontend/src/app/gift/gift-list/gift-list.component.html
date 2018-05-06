@@ -57,7 +57,7 @@
   <div class="ui fluid container">
     <div class="ui basic segment">
       <div class="ui centered cards">
-        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*9:page*9+9' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
+        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*12:page*12+12' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
       </div>
     </div>
   </div>

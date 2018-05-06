@@ -1,7 +1,8 @@
   .lichaam {
     background-color: rgba(9, 156, 248, 0.7);
-    height: 100%;
   }
+
+  html, body, .lichaam {margin: 0; height: 100%; overflow: hidden}
 
   ::-webkit-input-placeholder {
     color: #aaaaaa !important;
@@ -29,5 +30,8 @@
   }
 
   .ui.horizontal.segments {
-    margin-top: 52.6px
+    margin-top: 52.6px;
+    background: lightskyblue;
   }
+
+  
