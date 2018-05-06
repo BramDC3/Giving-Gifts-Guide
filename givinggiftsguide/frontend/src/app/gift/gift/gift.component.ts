@@ -17,4 +17,8 @@ export class GiftComponent implements OnInit {
   giftVerwijderen() {
     this.verwijderGift.emit(this.gift);
   }
+
+  giftLiken() {
+    this.gift.likes = this.gift.likes + 1;
+  }
 }

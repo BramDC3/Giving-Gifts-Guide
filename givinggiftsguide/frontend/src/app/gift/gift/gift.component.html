@@ -4,17 +4,23 @@
       <a routerLinkActive='active' routerLink="/gift/{{gift._id}}">{{gift._naam}}</a>
     </div>
     <div class="meta">
-      <p>Beschrijving: {{gift._beschrijving}}</p>
+      <p class="right floated">{{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
       <p>Prijs: &euro; {{gift._prijs}}</p>
+      <p>{{gift._beschrijving}}</p>
+      <!--
+      <button class="right floated ui icon button" (click)="giftVerwijderen()">
+        <i class="trash icon"></i>
+      </button>
+      -->
+      <button class="right floated ui icon button" (click)="giftLiken()">
+        <i class="red heart icon"></i>
+      </button>
+      <p>Aantal hartjes: {{gift._likes}}</p>
     </div>
-    <div class="description">
+  </div>
+  <div class="extra content">
+    <div class="center aligned author">
+      Toegevoegd door Bram De Coninck
     </div>
-    <div class="meta">
-      <p>Aanmaakdatum: {{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
-      <p>Aantal likes: {{gift._likes}}</p>
-    </div>
-    <button class="ui icon button" (click)="giftVerwijderen()">
-      <i class="trash icon"></i>
-    </button>
   </div>
 </div>

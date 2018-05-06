@@ -5,3 +5,8 @@
 p {
     text-align: left;
 }
+
+.ui.card > .content > .header:not(.ui), .ui.cards > .card > .content > .header:not(.ui) {
+    text-align: center;
+    margin-bottom: 7px;
+}

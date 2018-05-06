@@ -64,6 +64,10 @@ export class Gift {
     return this._likes;
   }
 
+  set likes(aantal: number) {
+    this._likes = aantal;
+  }
+
   voegCategorieToe(cat: Categorie) {
     this._categorieen.push(cat);
   }

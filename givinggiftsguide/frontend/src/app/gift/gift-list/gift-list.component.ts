@@ -44,6 +44,9 @@ export class GiftListComponent implements OnInit {
       else
         return this.gifts.length / 12;
     }
+    else {
+      return 0;
+    }
   }
 
   verkleinGiftsGrootte() {
