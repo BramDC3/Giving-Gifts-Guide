@@ -4,6 +4,8 @@ import { GiftDataService } from '../gift-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
+import { PaginationPipePipe } from '../pagination-pipe.pipe';
+import { GiftFilterPipe } from '../gift-filter.pipe';
 
 @Component({
   selector: 'app-gift-list',
@@ -81,14 +83,14 @@ export class GiftListComponent implements OnInit {
   }
 
   get giftsGrootte() {
-    if (this.gifts != null) {
-      if (this.gifts.length % 12 != 0)
-        return Math.floor(this._gifts.length / 12) + 1;
-      else
-        return this.gifts.length / 12;
+    if (this.gifts && this.gifts.length != 0) {
+      let gefilterdeGifts = new GiftFilterPipe().transform(
+        this.gifts, this.filterGiftName, this.filterGiftCategorie,
+        this.filterGiftSoort, this.filterGiftMinimumprijs, this.filterGiftMaximumprijs);
+      return new PaginationPipePipe().transform(gefilterdeGifts.length);
     }
     else {
-      return 0;
+      return 1;
     }
   }
 
@@ -104,6 +106,31 @@ export class GiftListComponent implements OnInit {
 
   get page() {
     return this._page;
+  }
+
+  applyFilterGiftSoort(value: string) {
+    this.filterGiftSoort$.next(value);
+    this._page = 0;
+  }
+
+  applyFilterGiftCategorie(value: string) {
+    this.filterGiftCategorie$.next(value);
+    this._page = 0;
+  }
+
+  applyFilterGiftNaam(value: string) {
+    this.filterGift$.next(value);
+    this._page = 0;
+  }
+
+  applyFilterGiftMinimumprijs(value: string) {
+    this.filterGiftMinimumprijs$.next(value);
+    this._page = 0;
+  }
+
+  applyFilterGiftMaximumprijs(value: string) {
+    this.filterGiftMaximumprijs$.next(value);
+    this._page = 0;
   }
 
   nieuweGiftToegevoegd(gift) {

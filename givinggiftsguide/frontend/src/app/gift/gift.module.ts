@@ -14,6 +14,7 @@ import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { GiftResolver } from "./gift/gift-resolver";
 import { httpInterceptorProviders } from "../http-interceptors";
 import { AuthGuardService } from "../user/auth-guard.service";
+import { PaginationPipePipe } from './pagination-pipe.pipe';
 
 const routes: Routes = [
     { path: 'list', component: GiftListComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
         VoegGiftToeComponent,
         GiftFilterPipe,
         GiftListComponent,
-        GiftDetailComponent
+        GiftDetailComponent,
+        PaginationPipePipe
     ],
     providers: [ httpInterceptorProviders, GiftDataService, GiftResolver ]
 })

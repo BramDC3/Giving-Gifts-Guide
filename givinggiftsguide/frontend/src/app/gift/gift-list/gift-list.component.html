@@ -1,7 +1,7 @@
 <div class="lichaam">
   <div class="ui horizontal segments">
     <div class="ui segment">
-      <select class="ui fluid dropdown" (change)="filterGiftCategorie$.next($event.target.value)">
+      <select class="ui fluid dropdown" #filtergiftcategorie (change)="applyFilterGiftCategorie(filtergiftcategorie.value)">
         <option value="Giftcategorie">Giftcategorie</option>
         <option value="Boeken">Boeken</option>
         <option value="Muziek">Muziek</option>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="ui segment">
-      <select class="ui fluid dropdown" (change)="filterGiftSoort$.next($event.target.value)">
+      <select class="ui fluid dropdown" #filtergiftsoort (change)="applyFilterGiftSoort(filtergiftsoort.value)">
         <option value="Giftsoort">Giftsoort</option>
         <option value="Normaal">Normaal</option>
         <option value="Promotie">Promotie</option>
@@ -33,7 +33,7 @@
     <div class="ui segment">
       <div class="ui search">
         <div class="ui fluid icon input focus">
-          <input class="prompt" type='text' placeholder='Zoek op naam...' (keyup)='filterGift$.next($event.target.value)'>
+          <input class="prompt" type='text' placeholder='Zoek op naam...' #filtergiftnaam (keyup)='applyFilterGiftNaam(filtergiftnaam.value)'>
           <i class="search icon"></i>
         </div>
       </div>
@@ -41,14 +41,14 @@
 
     <div class="ui segment">
       <div class="ui fluid left icon input focus">
-        <input placeholder="Minimumprijs in euro (€ 1)" type="text" (keyup)='filterGiftMinimumprijs$.next($event.target.value)'>
+        <input placeholder="Minimumprijs in euro (€ 1)" type="text" #filtergiftminimumprijs (keyup)='applyFilterGiftMinimumprijs(filtergiftminimumprijs.value)'>
         <i class="euro icon"></i>
       </div>
     </div>
 
     <div class="ui segment">
       <div class="ui fluid left icon input focus">
-        <input placeholder="Maximumprijs in euro (€ 9999)" type="text" (keyup)='filterGiftMaximumprijs$.next($event.target.value)'>
+        <input placeholder="Maximumprijs in euro (€ 9999)" type="text" #filtergiftmaximumprijs (keyup)='applyFilterGiftMaximumprijs(filtergiftmaximumprijs.value)'>
         <i class="euro icon"></i>
       </div>
     </div>
