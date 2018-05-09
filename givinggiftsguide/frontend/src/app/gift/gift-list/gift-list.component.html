@@ -1,39 +1,39 @@
 <div class="lichaam">
   <div class="ui horizontal segments">
     <div class="ui segment">
-      <select class="ui fluid dropdown">
-        <option value="">Giftcategorie</option>
-        <option value="0">Boeken</option>
-        <option value="1">Muziek</option>
-        <option value="2">Films &amp; Series</option>
-        <option value="3">Games</option>
-        <option value="4">Computers</option>
-        <option value="5">Elektronica</option>
-        <option value="6">Speelgoed &amp; Hobby</option>
-        <option value="7">Baby, Kind &amp; Mama</option>
-        <option value="8">Mooi &amp; Gezond</option>
-        <option value="9">Juwelen &amp; Accessoires</option>
-        <option value="10">Sport &amp; Vrije tijd</option>
-        <option value="11">Kantoor &amp; School</option>
-        <option value="12">Wonen &amp; Koken</option>
-        <option value="13">Tuin &amp; Klussen</option>
-        <option value="14">Dieren</option>
+      <select class="ui fluid dropdown" (change)="filterGiftCategorie$.next($event.target.value)">
+        <option value="Giftcategorie">Giftcategorie</option>
+        <option value="Boeken">Boeken</option>
+        <option value="Muziek">Muziek</option>
+        <option value="Films & Series">Films &amp; Series</option>
+        <option value="Games">Games</option>
+        <option value="Computers">Computers</option>
+        <option value="Elektronica">Elektronica</option>
+        <option value="Speelgoed & Hobby">Speelgoed &amp; Hobby</option>
+        <option value="Baby, Kind & Mama">Baby, Kind &amp; Mama</option>
+        <option value="Mooi & Gezond">Mooi &amp; Gezond</option>
+        <option value="Juwelen & Accessoires">Juwelen &amp; Accessoires</option>
+        <option value="Sport & Vrije tijd">Sport &amp; Vrije tijd</option>
+        <option value="Kantoor & School">Kantoor &amp; School</option>
+        <option value="Wonen & Koken">Wonen &amp; Koken</option>
+        <option value="Tuin & Klussen">Tuin &amp; Klussen</option>
+        <option value="Dieren">Dieren</option>
       </select>
     </div>
 
-    <div class="ui compact segment">
-      <select class="ui fluid dropdown">
-        <option value="">Giftsoort</option>
-        <option value="0">Normaal</option>
-        <option value="1">Promotie</option>
-        <option value="2">Feestdag</option>
+    <div class="ui segment">
+      <select class="ui fluid dropdown" (change)="filterGiftSoort$.next($event.target.value)">
+        <option value="Giftsoort">Giftsoort</option>
+        <option value="Normaal">Normaal</option>
+        <option value="Promotie">Promotie</option>
+        <option value="Feestdag">Feestdag</option>
       </select>
     </div>
 
     <div class="ui segment">
       <div class="ui search">
         <div class="ui fluid icon input focus">
-          <input class="prompt" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
+          <input class="prompt" type='text' placeholder='Zoek op naam...' (keyup)='filterGift$.next($event.target.value)'>
           <i class="search icon"></i>
         </div>
       </div>
@@ -41,14 +41,14 @@
 
     <div class="ui segment">
       <div class="ui fluid left icon input focus">
-        <input placeholder="Minimumprijs" type="text">
+        <input placeholder="Minimumprijs in euro (€ 1)" type="text" (keyup)='filterGiftMinimumprijs$.next($event.target.value)'>
         <i class="euro icon"></i>
       </div>
     </div>
 
     <div class="ui segment">
       <div class="ui fluid left icon input focus">
-        <input placeholder="Maximumprijs" type="text">
+        <input placeholder="Maximumprijs in euro (€ 9999)" type="text" (keyup)='filterGiftMaximumprijs$.next($event.target.value)'>
         <i class="euro icon"></i>
       </div>
     </div>
@@ -57,7 +57,7 @@
   <div class="ui fluid container">
     <div class="ui basic segment">
       <div class="ui centered cards">
-        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*12:page*12+12' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
+        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName:filterGiftCategorie:filterGiftSoort:filterGiftMinimumprijs:filterGiftMaximumprijs | slice:page*12:page*12+12' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
       </div>
     </div>
   </div>
@@ -80,92 +80,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="lichaam">
-  <div class="ui middle aligned center aligned grid container">
-
-    <div class="three wide column">
-      <select class="ui fluid dropdown">
-        <option value="">Giftcategorie</option>
-        <option value="0">Boeken</option>
-        <option value="1">Muziek</option>
-        <option value="2">Films & Series</option>
-        <option value="3">Games</option>
-        <option value="4">Computers</option>
-        <option value="5">Elektronica</option>
-        <option value="6">Speelgoed & Hobby</option>
-        <option value="7">Baby, Kind & Mama</option>
-        <option value="8">Mooi & Gezond</option>
-        <option value="9">Juwelen & Accessoires</option>
-        <option value="10">Sport & Vrije tijd</option>
-        <option value="11">Kantoor & School</option>
-        <option value="12">Wonen & Koken</option>
-        <option value="13">Tuin & Klussen</option>
-        <option value="14">Dieren</option>
-      </select>
-    </div>
-    <div class="three wide column">
-        <select class="ui fluid dropdown">
-          <option value="">Giftsoort</option>
-          <option value="0">Normaal</option>
-          <option value="1">Promotie</option>
-          <option value="2">Feestdag</option>
-        </select>
-    </div>
-    <div class="four wide column">
-      <div class="ui search">
-        <div class="ui fluid icon input focus">
-          <input class="prompt" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
-          <i class="search icon"></i>
-        </div>
-      </div>
-    </div>
-    <div class="three wide column">
-      <div class="ui fluid left icon input focus">
-        <input placeholder="Minimumprijs" type="text">
-        <i class="euro icon"></i>
-      </div>
-    </div>
-    <div class="three wide column">
-      <div class="ui fluid left icon input focus">
-        <input placeholder="Maximumprijs" type="text">
-        <i class="euro icon"></i>
-      </div>
-    </div>
-    <div class="ui basic segment">
-      <div class="ui centered cards">
-        <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName | slice:page*6:page*6+6' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
-      </div>
-    </div>
-    <button class="ui icon button" (click)="verkleinGiftsGrootte()">
-      <i class="big arrow alternate circle left icon"></i>
-    </button>
-    <p>{{page + 1}} / {{giftsGrootte}}</p>
-    <button class="ui icon button" (click)="verhoogGiftsGrootte()">
-      <i class="big arrow alternate circle right icon"></i>
-    </button>
-  </div>
-</div>
-
-
-
-  <div class="lichaam">
-  <div class="ui grid container">
-    <div *ngIf="errorMsg">{{errorMsg}}</div>
-    <div class="ui basic segment">
-      <div class="ui search">
-        <div class="ui icon input">
-          <input class="prompt" type='text' placeholder='Zoek op naam...' #filter (keyup)='filterGift$.next($event.target.value)'>
-          <i class="search icon"></i>
-        </div>
-      </div>
-      <div class="ui basic segment">
-        <div class="ui cards">
-          <app-gift *ngFor='let lokaleGift of gifts | giftFilter: filterGiftName' [gift]='lokaleGift' (verwijderGift)='giftVerwijderen($event)'></app-gift>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->

@@ -12,10 +12,20 @@ import { Subject } from 'rxjs/Subject';
 })
 export class GiftListComponent implements OnInit {
   public filterGiftName: string;
+  public filterGiftCategorie: string;
+  public filterGiftSoort: string;
+  public filterGiftMinimumprijs: number;
+  public filterGiftMaximumprijs: number;
+
   public filterGift$ = new Subject<string>();
+  public filterGiftCategorie$ = new Subject<string>();
+  public filterGiftSoort$ = new Subject<string>();
+  public filterGiftMinimumprijs$ = new Subject<string>();
+  public filterGiftMaximumprijs$ = new Subject<string>();
+
   public errorMsg: string;
   private _gifts: Gift[];
-  private page: number;
+  private _page: number;
 
   constructor(private _giftDataService: GiftDataService) {
     this.filterGift$
@@ -25,7 +35,40 @@ export class GiftListComponent implements OnInit {
         map(val => val.toLowerCase())
       )
       .subscribe(val => this.filterGiftName = val);
-    this.page = 0;
+
+    this.filterGiftCategorie$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(250),
+        map(val => val.toLowerCase())
+      )
+      .subscribe(val => this.filterGiftCategorie = val);
+
+    this.filterGiftSoort$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(250),
+        map(val => val.toLowerCase())
+      )
+      .subscribe(val => this.filterGiftSoort = val);
+
+    this.filterGiftMinimumprijs$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(250),
+        map(val => Number.parseInt(val))
+      )
+      .subscribe(val => this.filterGiftMinimumprijs = val);
+
+    this.filterGiftMaximumprijs$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(250),
+        map(val => Number.parseInt(val))
+      )
+      .subscribe(val => this.filterGiftMaximumprijs = val);
+
+    this._page = 0;
   }
 
   ngOnInit() {
@@ -50,13 +93,17 @@ export class GiftListComponent implements OnInit {
   }
 
   verkleinGiftsGrootte() {
-    if (this.page > 0)
-      this.page -= 1;
+    if (this._page > 0)
+      this._page -= 1;
   }
 
   verhoogGiftsGrootte() {
-    if (this.page < this.giftsGrootte - 1)
-      this.page += 1;
+    if (this._page < this.giftsGrootte - 1)
+      this._page += 1;
+  }
+
+  get page() {
+    return this._page;
   }
 
   nieuweGiftToegevoegd(gift) {
@@ -71,9 +118,5 @@ export class GiftListComponent implements OnInit {
           this.errorMsg = `Er is een fout opgetreden tijdens het verwijderen van deze gift.`;
         }
       );
-  }
-
-  applyFilter(filter: string) {
-    this.filterGiftName = filter;
   }
 }

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Type } from '@angular/core';
 import { Gift } from './gift/gift.model';
 
 @Pipe({
@@ -6,36 +6,39 @@ import { Gift } from './gift/gift.model';
 })
 export class GiftFilterPipe implements PipeTransform {
 
-  transform(gifts: Gift[], naam: string): Gift[] {
-    if (!naam || naam.length === 0) {
-      return gifts;
+  transform(gifts: Gift[], naam: string, categorie: string, soort: string, minimumprijs: number, maximumprijs:number): Gift[] {
+    
+    if (naam && naam.length !== 0) {
+      gifts = gifts.filter(gift =>
+        gift.naam.toLowerCase().includes(naam.toLowerCase())
+      );
     }
-    return gifts.filter(gift =>
-      gift.naam.toLowerCase().includes(naam.toLowerCase())
-    );
-  }
 
-  /*
-  transform(gifts: Gift[], naam: string): Gift[] {
-    if (!naam || naam.length === 0) {
-      return gifts.sort((g1, g2) => {
-        if (g1.likes > g2.likes)
-          return 1;
-        if (g1.likes < g2.likes)
-          return -1;
-        return 0;
-      });
+    if (categorie && categorie.length !== 0 && categorie !== "giftcategorie") {
+      gifts = gifts.filter(gift =>
+        gift.categorieen.map(cat => cat.naam.toLowerCase()).includes(categorie)
+      );
     }
-    return gifts.filter(gift =>
-      gift.naam.toLowerCase().includes(naam.toLowerCase())
-    ).sort((g1, g2) => {
-      if (g1.likes > g2.likes)
-        return 1;
-      if (g1.likes < g2.likes)
-        return -1;
-      return 0;
-    });
+
+    if (soort && soort.length !== 0 && soort !== "giftsoort") {
+      gifts = gifts.filter(gift =>
+        gift.categorieen.map(cat => cat.soort.toString().toLowerCase()).includes(soort)
+      );
+    }
+
+    if (minimumprijs && minimumprijs >= 1 && minimumprijs <= 9999) {
+      gifts = gifts.filter(gift => 
+        gift.prijs >= minimumprijs
+      );
+    }
+
+    if (maximumprijs && maximumprijs >= 1 && maximumprijs <= 9999) {
+      gifts = gifts.filter(gift => 
+        gift.prijs <= maximumprijs
+      );
+    }
+
+    return gifts;
   }
-  */
 
 }
