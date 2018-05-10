@@ -43,11 +43,7 @@ router.post('/API/gifts/', auth, function (req, res, next) {
     if (err) {
       return next(err);
     }
-    let gift = new Gift({
-      naam: req.body.naam,
-      beschrijving: req.body.beschrijving,
-      prijs: req.body.prijs
-    });
+    let gift = new Gift(req.body);
     gift.categorieen = ctgn;
     gift.save(function (err, rec) {
       if (err) {

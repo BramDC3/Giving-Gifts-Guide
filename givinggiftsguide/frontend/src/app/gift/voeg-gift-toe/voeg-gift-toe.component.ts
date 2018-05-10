@@ -5,6 +5,7 @@ import { Categorie } from '../categorie/categorie.model';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { GiftDataService } from '../gift-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from '../../user/authentication.service';
 
 @Component({
   selector: 'app-voeg-gift-toe',
@@ -18,7 +19,7 @@ export class VoegGiftToeComponent implements OnInit {
   private gift: FormGroup;
   errorMsg: string;
 
-  constructor(private fb: FormBuilder, private _giftDataService: GiftDataService) { }
+  constructor(private fb: FormBuilder, private _giftDataService: GiftDataService, private authService: AuthenticationService) { }
 
   get categorieen(): FormArray {
     return <FormArray>this.gift.get('categorieen');
@@ -64,7 +65,7 @@ export class VoegGiftToeComponent implements OnInit {
   onSubmit() {
     if (this.gift.value.naam != null && this.gift.value.naam != "" && this.gift.value.beschrijving != null && this.gift.value.beschrijving != "" && this.gift.value.prijs != null && this.gift.value.prijs != "" &&
       this.gift.value.naam.length >= 3 && this.gift.value.naam.length <= 40 && this.gift.value.beschrijving.length >= 10 && this.gift.value.beschrijving.length <= 150 && this.gift.value.prijs >= 1 && this.gift.value.prijs <= 9999) {
-      const gift = new Gift(this.gift.value.naam, this.gift.value.beschrijving, this.gift.value.prijs);
+      const gift = new Gift(this.gift.value.naam, this.gift.value.beschrijving, this.gift.value.prijs, this.authService.user$.getValue().toLowerCase());
       for (const cat of this.gift.value.categorieen) {
         if (cat.categorienaam.length > 2) {
           gift.voegCategorieToe(new Categorie(cat.categorienaam, cat.soort));

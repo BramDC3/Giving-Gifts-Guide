@@ -8,18 +8,20 @@ export class Gift {
   private _categorieen: Categorie[];
   private _aanmaakdatum: Date;
   private _likes: number;
+  private _eigenaar: string;
 
-  constructor(naam: string, beschrijving: string, prijs: number, categorieen: Categorie[] = [], aanmaakdatum: Date = null, likes: number = 0) {
+  constructor(naam: string, beschrijving: string, prijs: number, eigenaar: string, categorieen: Categorie[] = [], aanmaakdatum: Date = null, likes: number = 0) {
     this._naam = naam;
     this._beschrijving = beschrijving;
     this._prijs = prijs;
     this._categorieen = categorieen;
+    this._eigenaar = eigenaar;
     this._aanmaakdatum = aanmaakdatum ? aanmaakdatum : new Date();
     this._likes = likes;
   }
 
   static fromJSON(json: any): Gift {
-    const gift = new Gift(json.naam, json.beschrijving, json.prijs, json.categorieen, json.aanmaakdatum, json.likes);
+    const gift = new Gift(json.naam, json.beschrijving, json.prijs, json.eigenaar, json.categorieen, json.aanmaakdatum, json.likes);
     gift._id = json._id;
     return gift;
   }
@@ -30,6 +32,7 @@ export class Gift {
       naam: this._naam,
       beschrijving: this._beschrijving,
       prijs: this._prijs,
+      eigenaar: this._eigenaar,
       categorieen: this._categorieen,
       aanmaakdatum: this._aanmaakdatum,
       likes: this._likes
@@ -50,6 +53,10 @@ export class Gift {
 
   get prijs(): number {
     return this._prijs;
+  }
+
+  get eigenaar(): string {
+    return this._eigenaar;
   }
 
   get categorieen(): Categorie[] {

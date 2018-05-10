@@ -145,5 +145,6 @@ export class GiftListComponent implements OnInit {
           this.errorMsg = `Er is een fout opgetreden tijdens het verwijderen van deze gift.`;
         }
       );
+    this._page = 0;
   }
 }
