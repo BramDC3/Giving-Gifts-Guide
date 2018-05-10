@@ -8,11 +8,11 @@
       <p>Prijs: &euro; {{gift._prijs}}</p>
       <p>{{gift._beschrijving}}</p>
       <!--
-      <button class="right floated ui icon button" (click)="giftVerwijderen()">
+      <button class="right floated ui icon button" (click)="giftVerwijderen();$event.stopPropagation()">
         <i class="trash icon"></i>
       </button>
       -->
-      <button class="right floated ui icon button" (click)="giftLiken()">
+      <button class="right floated ui icon button" (click)="giftLiken();$event.stopPropagation()" >
         <i class="heart icon"></i>
       </button>
       <p>Aantal hartjes: {{gift._likes}}</p>
