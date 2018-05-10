@@ -29,4 +29,8 @@ export class GiftDetailComponent implements OnInit {
     return this._gift;
   }
 
+  get maakLink() {
+    return this.gift.naam.split(' ').join('+');
+  }
+
 }

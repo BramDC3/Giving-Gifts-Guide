@@ -16,6 +16,11 @@
   color: white;
   text-align: center !important;
 }
+.ui.message a {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 20px;
+}
 
 .ui.form .field > label {
   text-align: left;
