@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
 
-mongoose.connect('process.env.MONGOLAB_DB || mongodb://localhost/giftdb');
+mongoose.connect(process.env.MONGOLAB_DB || 'mongodb://localhost/giftdb');
 require('./models/Categorie');
 require('./models/Gift');
 require('./models/User');
