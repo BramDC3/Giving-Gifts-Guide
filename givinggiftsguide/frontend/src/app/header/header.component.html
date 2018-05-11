@@ -10,6 +10,8 @@
       <i class="gift icon"></i> Gifts</a>
     <a class="item" routerLinkActive='active' routerLink="gift/toevoegen">
       <i class="plus circle icon"></i> Gift toevoegen</a>
+      <a class="item" routerLinkActive='active' routerLink="/chatbot">
+        <i class="reddit icon"></i> Chat met Guido</a>
     <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">
       <i class="user circle icon"></i> {{currentUser|async}}</a>
     <div *ngIf='!(currentUser | async)' class="right menu">
