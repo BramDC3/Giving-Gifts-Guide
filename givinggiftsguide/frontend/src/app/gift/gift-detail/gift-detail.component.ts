@@ -15,7 +15,7 @@ export class GiftDetailComponent implements OnInit {
   errorMsg: string;
 
   private _gift: Gift;
-  private giftFG: FormGroup;
+  public giftFG: FormGroup;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private _giftDataService: GiftDataService, private authService: AuthenticationService) { }
 

@@ -16,7 +16,7 @@ export class VoegGiftToeComponent implements OnInit {
   public readonly soortTypes = ['Normaal', 'Promotie', 'Feestdag'];
   public readonly categorieLijst = ['Boeken', 'Muziek', 'Films & Series', 'Games', 'Computers', 'Elektronica', 'Speelgoed & Hobby', 'Baby, Kind & Mama', 'Mooi & Gezond', 'Juwelen & Accessoires', 'Sport & Vrije tijd', 'Kantoor & School', 'Wonen & Koken', 'Tuin & Klussen', 'Dieren'];
   @Output() public nieuweGift = new EventEmitter<Gift>();
-  private gift: FormGroup;
+  public gift: FormGroup;
   errorMsg: string;
 
   constructor(private fb: FormBuilder, private _giftDataService: GiftDataService, private authService: AuthenticationService) { }
