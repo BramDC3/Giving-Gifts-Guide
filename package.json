@@ -5,7 +5,7 @@
     "homepage": "http://github.com/BramDC3/",
     "scripts": {
         "start": "node server",
-        "deploy-backend": "git subtree push --prefix backend givinggiftsguide-backend master ",
+        "deploy-backend": "git subtree push --prefix givinggiftsguide/backend givinggiftsguide-backend master ",
         "build-frontend": "cd frontend && ng build --prod",
         "commit-build-changes": "git add . && git commit -m 'chore(build): build files'",
         "deploy-frontend": "npm run build-frontend && npm run copy && npm run commit-build-changes && git subtree push --prefix serve-frontend givinggiftsguide-frontend master",
