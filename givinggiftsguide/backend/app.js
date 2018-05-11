@@ -6,9 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
-let cors = require('cors');
 
-mongoose.connect('mongodb://localhost/giftdb');
+mongoose.connect('process.env.MONGOLAB_URI || mongodb://localhost/giftdb');
 require('./models/Categorie');
 require('./models/Gift');
 require('./models/User');
@@ -17,8 +16,9 @@ require('./config/passport');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
+let cors = require('cors');
+app.use(cors({origin: "*"}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,7 +31,6 @@ app.use(passport.initialize());
 
 app.use('/', index);
 app.use('/API/users', users);
-app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
