@@ -58,7 +58,7 @@
 
         <div class="field">
           <label for="categorie_naam">Categoriëen:</label>
-          <div formArrayName='categorieen' *ngFor='let item of gift.get("categorieen").controls; let i = index'>
+          <div formArrayName='categorieen' *ngFor='let item of formData.controls; let i = index'>
             <div [formGroupName]='i'>
               <div class='two fields'>
                 <div class="field">

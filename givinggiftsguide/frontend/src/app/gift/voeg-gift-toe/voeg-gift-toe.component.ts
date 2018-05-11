@@ -62,6 +62,10 @@ export class VoegGiftToeComponent implements OnInit {
     })
   }
 
+  get formData() {
+    return <FormArray>this.gift.get("categorieen");
+  }
+
   onSubmit() {
     if (this.gift.value.naam != null && this.gift.value.naam != "" && this.gift.value.beschrijving != null && this.gift.value.beschrijving != "" && this.gift.value.prijs != null && this.gift.value.prijs != "" &&
       this.gift.value.naam.length >= 3 && this.gift.value.naam.length <= 40 && this.gift.value.beschrijving.length >= 10 && this.gift.value.beschrijving.length <= 150 && this.gift.value.prijs >= 1 && this.gift.value.prijs <= 9999) {
