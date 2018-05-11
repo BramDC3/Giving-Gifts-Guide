@@ -7,10 +7,10 @@ export class Gift {
   private _prijs: number;
   private _categorieen: Categorie[];
   private _aanmaakdatum: Date;
-  private _likes: number;
+  private _likes: string[];
   private _eigenaar: string;
 
-  constructor(naam: string, beschrijving: string, prijs: number, eigenaar: string, categorieen: Categorie[] = [], aanmaakdatum: Date = null, likes: number = 0) {
+  constructor(naam: string, beschrijving: string, prijs: number, eigenaar: string, categorieen: Categorie[] = [], aanmaakdatum: Date = null, likes: string[] = []) {
     this._naam = naam;
     this._beschrijving = beschrijving;
     this._prijs = prijs;
@@ -67,12 +67,21 @@ export class Gift {
     return this._aanmaakdatum;
   }
 
-  get likes(): number {
+  get likes(): string[] {
     return this._likes;
   }
 
-  set likes(aantal: number) {
-    this._likes = aantal;
+  likeGift(naam: string) {
+    this._likes.push(naam);
+  }
+
+  unlikeGift(naam: string) {
+    let index = this._likes.findIndex(like => like === naam);
+    this._likes.splice(index, 1);
+  }
+
+  lietLikeAchter(naam: string): boolean {
+    return this._likes.includes(naam);
   }
 
   voegCategorieToe(cat: Categorie) {

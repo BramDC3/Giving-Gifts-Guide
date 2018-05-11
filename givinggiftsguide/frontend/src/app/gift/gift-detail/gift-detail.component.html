@@ -24,9 +24,24 @@
             readonly></textarea>
         </div>
 
-        <div class="field">
-          <label>Toegevoegd door:</label>
-          <input id="eigenaar" name="eigenaar" placeholder="Naam van de eigenaar" value="{{gift.eigenaar}}" readonly>
+        <div class="two fields">
+          <div class="field">
+            <label>Toegevoegd op {{gift.aanmaakdatum | date: 'dd/MM/yyyy'}} door:</label>
+            <input id="eigenaar" name="eigenaar" placeholder="Naam van de eigenaar" value="{{gift.eigenaar}}" readonly>
+          </div>
+          <div class="field">
+            <label>Aantal hartjes:</label>
+            <div class="ui action input">
+              <input placeholder="Aantal hartjes" value="{{gift.likes.length}}" readonly>
+              <button *ngIf='(currentUser && gift.eigenaar !== currentUser && lietLikeAchter)' class="right floated red ui icon button"
+                (click)="giftUnliken()">
+                <i class="heart icon"></i>
+              </button>
+              <button *ngIf='(currentUser && gift.eigenaar !== currentUser && !lietLikeAchter)' class="right floated ui icon button" (click)="giftLiken()">
+                <i class="heart icon"></i>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div *ngIf='(gift.categorieen && gift.categorieen.length !== 0)' class="field">

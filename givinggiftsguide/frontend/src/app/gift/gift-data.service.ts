@@ -23,10 +23,16 @@ export class GiftDataService {
     .pipe(map(Gift.fromJSON));
   }
 
+  pasGiftAan(gift): Observable<Gift> {
+    return this.http
+    .put(`${this._appUrl}/gift/${gift.id}`, gift.likes)
+    .pipe(map(Gift.fromJSON));
+  }
+
   verwijderGift(gift) {
     return this.http
-      .delete(`${this._appUrl}/gift/${gift.id}`)
-      .pipe(map(Gift.fromJSON));
+    .delete(`${this._appUrl}/gift/${gift.id}`)
+    .pipe(map(Gift.fromJSON));
   }
 
   voegCategorieToeAanGift (cat: Categorie, gift: Gift): Observable<Categorie> {

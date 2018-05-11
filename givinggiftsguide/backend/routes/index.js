@@ -37,6 +37,16 @@ router.get('/API/gift/:gift', function (req, res, next) {
   res.json(req.gift);
 });
 
+/* PUT gift with id */
+router.put('/API/gift/:gift', auth, function (req, res, next) {
+  let gift = req.gift;
+  gift.likes = req.body;
+  gift.save(function (err, rec) {
+    if (err) { return next(err); }
+    res.json(gift);
+  });
+});
+
 /* POST new gift */
 router.post('/API/gifts/', auth, function (req, res, next) {
   Categorie.create(req.body.categorieen, function (err, ctgn) {

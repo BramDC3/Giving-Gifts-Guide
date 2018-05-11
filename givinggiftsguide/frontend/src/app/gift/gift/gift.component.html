@@ -1,19 +1,22 @@
-<div class="ui raised link card" routerLinkActive='active' routerLink="/gift/{{gift._id}}">
+<div class="ui raised link card" routerLinkActive='active' routerLink="/gift/{{gift.id}}">
   <div class="content">
     <div class="header">
-      <a routerLinkActive='active' routerLink="/gift/{{gift._id}}">{{gift._naam}}</a>
+      <a routerLinkActive='active' routerLink="/gift/{{gift.id}}">{{gift.naam}}</a>
     </div>
     <div class="meta">
-      <p class="right floated">{{gift._aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
-      <p>Prijs: &euro; {{gift._prijs}}</p>
-      <p>{{gift._beschrijving}}</p>
+      <p class="right floated">{{gift.aanmaakdatum | date: 'dd/MM/yyyy'}}</p>
+      <p>Prijs: &euro; {{gift.prijs}}</p>
+      <p>{{gift.beschrijving}}</p>
       <button *ngIf='(currentUser && gift.eigenaar === currentUser)' class="right floated ui icon button" (click)="giftVerwijderen();$event.stopPropagation()">
         <i class="trash icon"></i>
       </button>
-      <button *ngIf='(currentUser && gift.eigenaar !== currentUser)' class="right floated ui icon button" (click)="giftLiken();$event.stopPropagation()" >
+      <button *ngIf='(currentUser && gift.eigenaar !== currentUser && lietLikeAchter)' class="right floated red ui icon button" (click)="giftUnliken();$event.stopPropagation()" >
         <i class="heart icon"></i>
       </button>
-      <p>Aantal hartjes: {{gift._likes}}</p>
+      <button *ngIf='(currentUser && gift.eigenaar !== currentUser && !lietLikeAchter)' class="right floated ui icon button" (click)="giftLiken();$event.stopPropagation()" >
+        <i class="heart icon"></i>
+      </button>
+      <p>Aantal hartjes: {{gift.likes.length}}</p>
     </div>
   </div>
   <div class="extra content">
