@@ -7,7 +7,7 @@ import { Categorie } from './categorie/categorie.model';
 
 @Injectable()
 export class GiftDataService {
-  private readonly _appUrl = '/API/';
+  private readonly _appUrl = '/API';
 
   constructor(private http: HttpClient) {}
 

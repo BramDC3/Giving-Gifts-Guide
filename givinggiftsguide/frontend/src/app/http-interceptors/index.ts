@@ -1,12 +1,11 @@
-/* "Barrel" of Http Interceptors */
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthenticationInterceptor } from './AuthenticationInterceptor';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { BaseUrlInterceptor } from "./base-url.interceptors";
 
-/** Http interceptor providers in outside-in order */
-export const httpInterceptorProviders = [
+
+export const basehttpInterceptorProviders = [
   {
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthenticationInterceptor,
+    useClass: BaseUrlInterceptor,
     multi: true
   }
 ];

@@ -8,6 +8,7 @@ import { AuthenticationService } from "../user/authentication.service";
 import { AuthGuardService } from "../user/auth-guard.service";
 import { MessageListComponent, MessageItemComponent, MessageFormComponent } from "./components";
 import { DialogflowService } from "./services";
+import { basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes = [
     { path: 'chatbot', component: ChatbotComponent }
@@ -28,6 +29,7 @@ const routes = [
         ChatbotComponent
     ],
     providers: [
+        basehttpInterceptorProviders,
         AuthenticationService,
         AuthGuardService,
         DialogflowService

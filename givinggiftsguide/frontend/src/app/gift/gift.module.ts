@@ -12,9 +12,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { GiftResolver } from "./gift/gift-resolver";
-import { httpInterceptorProviders } from "../http-interceptors";
 import { AuthGuardService } from "../user/auth-guard.service";
 import { PaginationPipePipe } from './pagination-pipe.pipe';
+import { basehttpInterceptorProviders } from "../http-interceptors";
+import { httpInterceptorProviders } from "../app.module";
 
 const routes: Routes = [
     { path: 'list', component: GiftListComponent },
@@ -38,6 +39,6 @@ const routes: Routes = [
         GiftDetailComponent,
         PaginationPipePipe
     ],
-    providers: [ httpInterceptorProviders, GiftDataService, GiftResolver ]
+    providers: [basehttpInterceptorProviders, httpInterceptorProviders, GiftDataService, GiftResolver ]
 })
 export class GiftModule { }
