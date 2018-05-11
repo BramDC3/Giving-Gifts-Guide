@@ -13,7 +13,7 @@ export class ChatbotComponent {
   constructor() {
     this.message = new Message('', 'assets/images/user.png');
     this.messages = [
-      new Message('Welcome! I am Guido, the Gift Giving Guide. For the moment I can only speak English.', 'assets/images/bot.png', new Date())
+      new Message('Welcome! I am Guido, the Giving Gifts Guide. Momentarily I can only speak English.', 'assets/images/bot.png', new Date())
     ];
   }
 

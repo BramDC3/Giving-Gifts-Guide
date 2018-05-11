@@ -3,4 +3,17 @@
     margin: 0 auto;
     margin-top: 50px;
   }
-  
+
+  .lichaam {
+    background-color: rgba(9, 156, 248, 0.7);
+  }
+
+  html, body, .lichaam {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+  }
+
+  .lichaam > .grid {
+    height: 100%;
+  }
