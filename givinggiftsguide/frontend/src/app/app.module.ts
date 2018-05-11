@@ -11,14 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { DialogflowService } from './chatbot/services';
 import { BaseUrlInterceptor } from './http-interceptors/base-url.interceptors';
 
-export const httpInterceptorProviders = [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: BaseUrlInterceptor,
-    multi: true
-  }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +24,7 @@ export const httpInterceptorProviders = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
