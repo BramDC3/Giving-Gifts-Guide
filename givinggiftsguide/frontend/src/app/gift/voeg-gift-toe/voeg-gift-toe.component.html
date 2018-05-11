@@ -9,7 +9,7 @@
 
         <div class="field">
           <label class="ui center aligned" for="naam">Naam:</label>
-          <input id="naam" name="naam" placeholder="Gift naam" #naamnieuwegift formControlName='naam'>
+          <input id="naam" name="naam" placeholder="Gift naam" #naamnieuwegift formControlName='naam' data-test="giftNaam">
           <div *ngIf='gift.get("naam").errors?.required && gift.get("naam").touched' class='ui pointing red basic label'>
             Naam is een verplicht veld
           </div>
@@ -25,7 +25,7 @@
 
         <div class="field">
           <label for="beschrijving">Beschrijving:</label>
-          <input id="beschrijving" name="beschrijving" placeholder="Gift beschrijving" #beschrijvingnieuwegift formControlName='beschrijving'>
+          <input id="beschrijving" name="beschrijving" placeholder="Gift beschrijving" #beschrijvingnieuwegift formControlName='beschrijving' data-test="giftBeschrijving">
           <div *ngIf='gift.get("beschrijving").errors?.required && gift.get("beschrijving").touched' class='ui pointing red basic label'>
             Beschrijving is een verplicht veld
           </div>
@@ -41,7 +41,7 @@
 
         <div class="field">
           <label for="prijs">Prijs:</label>
-          <input id="prijs" name="prijs" placeholder="Gift prijs" #prijsnieuwegift formControlName='prijs'>
+          <input id="prijs" name="prijs" placeholder="Gift prijs" #prijsnieuwegift formControlName='prijs' data-test="giftPrijs">
           <div *ngIf='gift.get("prijs").errors?.required && gift.get("prijs").touched' class='ui pointing red basic label'>
             Prijs is een verplicht veld
           </div>
@@ -62,14 +62,14 @@
             <div [formGroupName]='i'>
               <div class='two fields'>
                 <div class="field">
-                  <select id="categorie_naam" formControlName='categorienaam'>
+                  <select id="categorie_naam" formControlName='categorienaam' data-test="categorieNaam">
                     <option *ngFor='let type of categorieLijst' [value]='type'>
                       {{type}}
                     </option>
                   </select>
                 </div>
                 <div class="field">
-                  <select id="categorie_soort" formControlName='soort'>
+                  <select id="categorie_soort" formControlName='soort' data-test="categorieSoort">
                     <option *ngFor='let type of soortTypes' [value]='type'>
                       {{type}}
                     </option>
@@ -80,7 +80,7 @@
           </div>
         </div>
 
-        <button class="ui fluid large primary button" type="submit">
+        <button class="ui fluid large primary button" type="submit" data-test="voegGiftToeBtn">
           Voeg gift idee toe
         </button>
       </form>

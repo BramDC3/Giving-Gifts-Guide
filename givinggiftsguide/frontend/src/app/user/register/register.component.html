@@ -11,7 +11,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon before"></i>
-              <input id="username" placeholder="Gebruikersnaam" type="text" formControlName='username'>
+              <input id="username" placeholder="Gebruikersnaam" type="text" formControlName='username' data-test="username">
             </div>
             <div class='ui pointing red basic label' *ngIf=' user.get("username").errors?.required && user.get("username").touched'>
               Een gebruikersnaam is verplicht
@@ -27,7 +27,7 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon before"></i>
-                <input name="password" id="password" placeholder="Wachtwoord" type="password" formControlName='password'>
+                <input name="password" id="password" placeholder="Wachtwoord" type="password" formControlName='password' data-test="password">
               </div>
               <div class='ui pointing red basic label' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>
                 Het wachtwoord is te kort, gelieve minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} karakters te gebruiken
@@ -37,14 +37,14 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon before"></i>
-                <input name="password" id="confirmpassword" placeholder="Bevestiging wachtwoord" type="password" formControlName='confirmPassword'>
+                <input name="password" id="confirmpassword" placeholder="Bevestiging wachtwoord" type="password" formControlName='confirmPassword' data-test="confirmPassword">
               </div>
               <div class='ui pointing red basic label' *ngIf=' user.get("passwordGroup").errors?.passwordsDiffer && user.get("passwordGroup").get("confirmPassword").touched  && user.get("passwordGroup").get("password").touched'>
                 De twee ingevoerde wachtwoorden komen niet overeen
               </div>
             </div>
           </div>
-          <button type='submit' [disabled]='!user.valid' class="ui fluid large primary button">Registreer</button>
+          <button type='submit' [disabled]='!user.valid' class="ui fluid large primary button" data-test="registerBtn">Registreer</button>
         </div>
       </form>
     </div>

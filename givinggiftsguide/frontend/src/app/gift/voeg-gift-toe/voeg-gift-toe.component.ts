@@ -72,7 +72,9 @@ export class VoegGiftToeComponent implements OnInit {
         }
       }
       this._giftDataService.voegNieuweGiftToe(gift).subscribe(
-        item => { },
+        () => {
+          this.gift.reset();
+        },
         (error: HttpErrorResponse) => {
           this.errorMsg = `Er is een fout opgetreden bij het toevoegen van de gift ${gift.naam}`;
         }

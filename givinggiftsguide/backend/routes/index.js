@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 let mongoose = require('mongoose');
 let Gift = mongoose.model('Gift');
+let User = mongoose.model('User');
 let Categorie = mongoose.model('Categorie');
 let jwt = require('express-jwt');
 let auth = jwt({
@@ -93,6 +94,17 @@ router.delete('/API/gift/:gift', auth, function (req, res, next) {
         res.json(req.gift);
       });
     });
+});
+
+/* Reset Database */
+router.post('/API/reset_db', auth, (req, res, next) => {
+  Gift.find({}, (err, gifts) => {
+    gifts.forEach(gift => gift.remove());
+  });
+  User.find({}, (err, users) => {
+    users.forEach(user => user.remove());
+  });
+  res.status(204).end();
 });
 
 module.exports = router;

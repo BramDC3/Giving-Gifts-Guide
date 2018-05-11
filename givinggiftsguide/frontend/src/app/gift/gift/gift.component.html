@@ -13,7 +13,7 @@
       <button *ngIf='(currentUser && gift.eigenaar !== currentUser && lietLikeAchter)' class="right floated red ui icon button" (click)="giftUnliken();$event.stopPropagation()" >
         <i class="heart icon"></i>
       </button>
-      <button *ngIf='(currentUser && gift.eigenaar !== currentUser && !lietLikeAchter)' class="right floated ui icon button" (click)="giftLiken();$event.stopPropagation()" >
+      <button *ngIf='(currentUser && gift.eigenaar !== currentUser && !lietLikeAchter)' class="right floated ui icon button" (click)="giftLiken();$event.stopPropagation()" data-test="giftLikeBtn" >
         <i class="heart icon"></i>
       </button>
       <p>Aantal hartjes: {{gift.likes.length}}</p>

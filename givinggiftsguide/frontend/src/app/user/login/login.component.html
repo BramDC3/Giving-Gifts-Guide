@@ -11,16 +11,16 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon before"></i>
-              <input name="email" placeholder="Gebruikersnaam" type="text" formControlName='username'>
+              <input name="email" placeholder="Gebruikersnaam" type="text" formControlName='username' data-test="username">
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon before"></i>
-              <input name="password" placeholder="Wachtwoord" type="password" formControlName='password'>
+              <input name="password" placeholder="Wachtwoord" type="password" formControlName='password' data-test="password">
             </div>
           </div>
-          <button type='submit' [disabled]='!user.valid' class="ui fluid large primary button" id='loginbtn'>Log in</button>
+          <button type='submit' [disabled]='!user.valid' class="ui fluid large primary button" id='loginbtn' data-test="loginBtn">Log in</button>
         </div>
       </form>
       <div class="ui message">

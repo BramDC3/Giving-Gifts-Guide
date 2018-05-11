@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
+let cors = require('cors');
 
 mongoose.connect('mongodb://localhost/giftdb');
 require('./models/Categorie');
@@ -30,6 +31,7 @@ app.use(passport.initialize());
 
 app.use('/', index);
 app.use('/API/users', users);
+app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
