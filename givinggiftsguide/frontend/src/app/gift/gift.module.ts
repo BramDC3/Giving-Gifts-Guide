@@ -14,7 +14,6 @@ import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { GiftResolver } from "./gift/gift-resolver";
 import { AuthGuardService } from "../user/auth-guard.service";
 import { PaginationPipePipe } from './pagination-pipe.pipe';
-import { basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes = [
     { path: 'list', component: GiftListComponent },
@@ -38,6 +37,6 @@ const routes: Routes = [
         GiftDetailComponent,
         PaginationPipePipe
     ],
-    providers: [basehttpInterceptorProviders, GiftDataService, GiftResolver ]
+    providers: [GiftDataService, GiftResolver ]
 })
 export class GiftModule { }

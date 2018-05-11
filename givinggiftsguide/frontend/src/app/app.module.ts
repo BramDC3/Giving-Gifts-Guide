@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { DialogflowService } from './chatbot/services';
 import { BaseUrlInterceptor } from './http-interceptors/base-url.interceptors';
+import { basehttpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { BaseUrlInterceptor } from './http-interceptors/base-url.interceptors';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [basehttpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
