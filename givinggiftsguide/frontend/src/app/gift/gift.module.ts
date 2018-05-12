@@ -38,6 +38,6 @@ const routes: Routes = [
         GiftDetailComponent,
         PaginationPipePipe
     ],
-    providers: [basehttpInterceptorProviders, GiftDataService, GiftResolver ]
+    providers: [GiftDataService, GiftResolver ]
 })
 export class GiftModule { }
