@@ -24,8 +24,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        HttpClientModule,
         CommonModule,
+        HttpClientModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes)
     ],
@@ -38,6 +38,6 @@ const routes: Routes = [
         GiftDetailComponent,
         PaginationPipePipe
     ],
-    providers: [GiftDataService, GiftResolver ]
+    providers: [ ]
 })
 export class GiftModule { }

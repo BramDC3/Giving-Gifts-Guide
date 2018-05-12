@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { DialogflowService } from './chatbot/services';
 import { basehttpInterceptorProviders, httpInterceptorProviders } from './http-interceptors';
+import { GiftDataService } from './gift/gift-data.service';
+import { GiftResolver } from './gift/gift/gift-resolver';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { basehttpInterceptorProviders, httpInterceptorProviders } from './http-i
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [basehttpInterceptorProviders, httpInterceptorProviders],
+  providers: [basehttpInterceptorProviders, httpInterceptorProviders, GiftDataService, GiftResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
