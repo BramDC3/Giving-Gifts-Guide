@@ -1,19 +1,25 @@
 .chatform{
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 50px;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.lichaam {
+  background-color: rgba(9, 156, 248, 0.7);
+  min-height: 100%;
+  padding-top: 5rem;
+}
+
+.lichaam > .grid {
+  height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .chatform {
+      width: 90%;
   }
 
   .lichaam {
-    background-color: rgba(9, 156, 248, 0.7);
+    padding-top: 1rem;
   }
-
-  html, body, .lichaam {
-    margin: 0;
-    height: 100%;
-    overflow: hidden
-  }
-
-  .lichaam > .grid {
-    height: 100%;
-  }
+}

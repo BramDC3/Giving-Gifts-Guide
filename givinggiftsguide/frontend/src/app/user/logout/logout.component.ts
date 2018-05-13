@@ -9,11 +9,16 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
+  private mobile: boolean;
+
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.authService.logout();
-    // this.router.navigate(['login']);
+
+    if (window.screen.width === 360) {
+      this.mobile = true;
+    }
   }
 
 }

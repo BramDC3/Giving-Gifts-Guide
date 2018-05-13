@@ -28,6 +28,7 @@ export class GiftListComponent implements OnInit {
   public errorMsg: string;
   private _gifts: Gift[];
   private _page: number;
+  private mobile: boolean;
 
   constructor(private _giftDataService: GiftDataService) {
     this.filterGift$
@@ -76,6 +77,10 @@ export class GiftListComponent implements OnInit {
   ngOnInit() {
     this._giftDataService.gifts.subscribe(
       items => this._gifts = items);
+
+    if (window.screen.width === 360) {
+      this.mobile = true;
+    }
   }
 
   get gifts() {

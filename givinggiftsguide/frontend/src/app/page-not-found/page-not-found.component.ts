@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
+  private mobile: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    if (window.screen.width === 360) {
+      this.mobile = true;
+    }
   }
 
 }

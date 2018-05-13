@@ -1,6 +1,7 @@
   .lichaam {
     background-color: rgba(9, 156, 248, 0.7);
-    height: 100%;
+    min-height: 100%;
+    padding-top: 12rem;
   }
   .lichaam > .grid {
     height: 100%;

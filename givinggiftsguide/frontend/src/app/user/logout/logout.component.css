@@ -1,7 +1,8 @@
 .achtergrond {
-    height: 100%;
     background-color: rgba(9, 156, 248, 0.7);
   }
+
+  html, body, .achtergrond {margin: 0; height: 100%; overflow: hidden}
   
   .c {
     text-align: center;
@@ -9,7 +10,7 @@
     position: relative;
   }
   ._404 {
-    font-size: 80px;
+    font-size: 70px;
     position: relative;
     display: inline-block;
     z-index: 2;
@@ -23,7 +24,7 @@
     position: relative;
     letter-spacing: 2px;
     font-size: 2.5em;
-    line-height: 80%;
+    line-height: 100%;
     margin-bottom: 30px;
   }
   ._2 {
@@ -31,6 +32,7 @@
     display: block;
     position: relative;
     font-size: 2em;
+    line-height: 100%;
     margin-bottom: 50px;
   }
   .text {

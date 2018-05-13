@@ -10,10 +10,10 @@ export class PaginationPipePipe implements PipeTransform {
     if (!aantalGifts || aantalGifts === 0)
       return 1;
 
-    if (aantalGifts % 12 != 0)
-      return Math.floor(aantalGifts / 12) + 1;
+    if (aantalGifts % 10 != 0)
+      return Math.floor(aantalGifts / 10) + 1;
     else
-      return aantalGifts / 12;
+      return aantalGifts / 10;
       
   }
 }

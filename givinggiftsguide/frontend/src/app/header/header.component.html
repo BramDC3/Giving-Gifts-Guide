@@ -1,24 +1,20 @@
-<div class="ui fixed inverted pointing menu">
-  <div class="ui container">
-    <a routerLink="gift/list">
-      <div class="item">
-        <img class="image" src="/assets/giftbox.png">
-        <p>Giving Gifts Guide</p>
-      </div>
-    </a>
-    <a class="item" routerLinkActive='active' routerLink="gift/list">
-      <i class="gift icon"></i> Gifts</a>
-    <a class="item" routerLinkActive='active' routerLink="gift/toevoegen">
-      <i class="plus circle icon"></i> Gift toevoegen</a>
-      <a class="item" routerLinkActive='active' routerLink="/chatbot">
-        <i class="reddit icon"></i> Chat met Guido</a>
-    <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">
-      <i class="user circle icon"></i> {{currentUser|async}}</a>
-    <div *ngIf='!(currentUser | async)' class="right menu">
-      <a class="item" routerLinkActive='active' routerLink="/login">
-        <i class="address book icon"></i> Log in</a>
-      <a class="item" routerLinkActive='active' routerLink="/register">
-        <i class="user plus icon"></i> Registreer</a>
-    </div>
+<div class="ui fluid inverted stackable container menu">
+  <a class="item" routerLink="gift/list">
+    <img class="image" src="/assets/giftbox.png">
+    <p>Giving Gifts Guide</p>
+  </a>
+  <a class="item" routerLinkActive='active' routerLink="gift/list">
+    <i class="gift icon"></i> Gifts</a>
+  <a class="item" routerLinkActive='active' routerLink="gift/toevoegen">
+    <i class="plus circle icon"></i> Gift toevoegen</a>
+  <a class="item" routerLinkActive='active' routerLink="/chatbot">
+    <i class="reddit icon"></i> Chat met Guido</a>
+  <a *ngIf='(currentUser | async)' class="item right" routerLinkActive='active' routerLink="/logout">
+    <i class="user circle icon"></i> {{currentUser|async}}</a>
+  <div *ngIf='!(currentUser | async)' class="right menu">
+    <a class="item" routerLinkActive='active' routerLink="/login">
+      <i class="address book icon"></i> Log in</a>
+    <a class="item" routerLinkActive='active' routerLink="/register">
+      <i class="user plus icon"></i> Registreer</a>
   </div>
 </div>

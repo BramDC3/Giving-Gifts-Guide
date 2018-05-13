@@ -12,12 +12,14 @@ import { DialogflowService } from './chatbot/services';
 import { basehttpInterceptorProviders, httpInterceptorProviders } from './http-interceptors';
 import { GiftDataService } from './gift/gift-data.service';
 import { GiftResolver } from './gift/gift/gift-resolver';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    HeaderComponent],
+    HeaderComponent,
+    FooterComponent],
   imports: [
     BrowserModule,
     UserModule,
