@@ -17,6 +17,7 @@
 @media only screen and (max-width: 767px) {
   .chatform {
       width: 90%;
+      margin-bottom: 10px;
   }
 
   .lichaam {

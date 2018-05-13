@@ -1,8 +1,7 @@
   .achtergrond {
     background-color: rgba(9, 156, 248, 0.7);
+    min-height: 100%;
   }
-
-  html, body, .achtergrond {margin: 0; height: 100%; overflow: hidden}
   
   .c {
     text-align: center;
@@ -214,5 +213,11 @@
     }
     100% {
       margin-left: -1000px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    ._404 {
+      font-size: 130px;
     }
   }

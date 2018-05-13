@@ -29,10 +29,19 @@
   }
 
   .ui.horizontal.segments {
-    margin-top: 52.6px;
     background: lightskyblue;
+    margin: 0%;
   }
 
   .ui.segment p {
     padding-top: 12px;
+  }
+
+  .ui.fluid.container {
+    margin-top: 30px;
+  }
+
+  .ui.center.aligned.grid {
+    margin-top: 30px;
+    padding-bottom: 50px;
   }

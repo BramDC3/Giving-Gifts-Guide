@@ -52,3 +52,9 @@
     color: #aaaaaa !important;
     opacity: 1;
   }
+
+  @media only screen and (max-width: 767px) {
+    .lichaam {
+      padding-top: 1rem;
+    }
+  }

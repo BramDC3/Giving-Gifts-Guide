@@ -1,7 +1,7 @@
   .lichaam {
     background-color: rgba(9, 156, 248, 0.7);
     min-height: 100%;
-    padding-top: 12rem;
+    padding-top: 13rem;
   }
   .lichaam > .grid {
     height: 100%;
@@ -39,4 +39,10 @@
   .formerize-placeholder {
     color: #aaaaaa !important;
     opacity: 1;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .lichaam {
+      padding-top: 1rem;
+    }
   }
