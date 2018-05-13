@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  private mobile: boolean;
+  public mobile: boolean;
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 

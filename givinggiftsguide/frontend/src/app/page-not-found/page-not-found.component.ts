@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  private mobile: boolean;
+  public mobile: boolean;
 
   constructor() { }
 

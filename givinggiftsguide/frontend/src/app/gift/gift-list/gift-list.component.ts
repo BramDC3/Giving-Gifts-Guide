@@ -28,7 +28,7 @@ export class GiftListComponent implements OnInit {
   public errorMsg: string;
   private _gifts: Gift[];
   private _page: number;
-  private mobile: boolean;
+  public mobile: boolean;
 
   constructor(private _giftDataService: GiftDataService) {
     this.filterGift$
