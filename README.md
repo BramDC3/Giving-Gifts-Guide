@@ -9,7 +9,7 @@ Dit zijn de links naar de frontend en backend van de webapplicatie:
 Naam | Link
 ------------ | -------------
 Heroku Frontend | https://givinggiftsguide-frontend.herokuapp.com/
-Heroku Backend | https://givinggiftsguide-frontend.herokuapp.com/
+Heroku Backend | https://givinggiftsguide-backend.herokuapp.com/
 
 <br/>
 Er is reeds een account aangemaakt die u kan gebruiken:
